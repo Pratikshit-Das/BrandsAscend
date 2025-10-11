@@ -1,0 +1,397 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>BrandsAscend | Content Authority & Growth</title>
+    <!-- Load Tailwind CSS -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@100..900&display=swap" rel="stylesheet">
+    <style>
+        /* Custom Dark Background color to match the images */
+        .bg-dark-primary {
+            background-color: #0d0d0d;
+        }
+        /* Custom card background */
+        .bg-card {
+            background-color: #1a1a1a;
+        }
+        /* Tilt effect for process steps */
+        .tilted-box {
+            transform: rotate(-1deg);
+            box-shadow: 8px 8px 0px rgba(0, 0, 0, 0.2);
+        }
+        /* Scroll snapping for sections */
+        .section-snap {
+            scroll-snap-align: start;
+        }
+        /* Video Container for 16:9 aspect ratio */
+        .video-container {
+            position: relative;
+            width: 100%;
+            padding-bottom: 56.25%; /* 16:9 Aspect Ratio */
+            height: 0;
+            overflow: hidden;
+            border-radius: 1rem; /* rounded-xl */
+        }
+        .video-container iframe {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+        }
+    </style>
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    fontFamily: {
+                        sans: ['Inter', 'sans-serif'],
+                    },
+                    colors: {
+                        'accent-yellow': '#FACC15', /* A bright gold/yellow for accents */
+                    }
+                }
+            }
+        }
+    </script>
+</head>
+<body class="bg-dark-primary text-gray-200 font-sans antialiased scroll-smooth">
+
+    <!-- Navbar -->
+    <header class="sticky top-0 z-50 bg-dark-primary/95 backdrop-blur-sm shadow-md">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-4 flex justify-between items-center">
+            <!-- Logo Implementation (Using uploaded image as a placeholder for the URL) -->
+            <a href="#" class="text-2xl font-bold text-white tracking-wider">
+                <!-- In a real deployment, you would replace the placeholder URL with the actual path to your logo -->
+                <img src="uploaded:brandascend logo2.png-21c28927-c115-45cb-9cd2-6a2b3644528d" onerror="this.onerror=null; this.src='https://placehold.co/200x40/0d0d0d/ffffff?text=BrandsAscend'" alt="BrandsAscend Logo" class="h-8 sm:h-10 w-auto">
+            </a>
+            <nav class="hidden sm:block">
+                <a href="#services" class="text-sm font-medium hover:text-accent-yellow transition duration-300 mr-6">Services</a>
+                <a href="#process" class="text-sm font-medium hover:text-accent-yellow transition duration-300 mr-6">Process</a>
+                <a href="#clients" class="text-sm font-medium hover:text-accent-yellow transition duration-300 mr-6">Clients</a>
+                <a href="#faq" class="text-sm font-medium hover:text-accent-yellow transition duration-300">FAQ</a>
+            </nav>
+            <!-- Removed CASE STUDIES button as requested -->
+            <a href="https://calendly.com/itspratikshit/30min" target="_blank" class="border border-white hover:border-accent-yellow text-white hover:text-accent-yellow px-4 py-2 text-sm font-semibold rounded-lg transition duration-300">
+                BOOK A DISCOVERY CALL
+            </a>
+        </div>
+    </header>
+
+    <main>
+        <!-- 1. Hero Section -->
+        <section id="hero" class="min-h-screen flex items-center justify-center text-center p-8 section-snap">
+            <div class="max-w-4xl mx-auto">
+                <span class="text-xs uppercase tracking-widest text-gray-400 border border-gray-600 px-3 py-1 rounded-full mb-6 inline-block">FULL STACK CONTENT</span>
+                <h1 class="text-4xl sm:text-6xl lg:text-7xl font-extrabold text-white mb-6 leading-tight">
+                    Welcome to BrandsAscend
+                </h1>
+                <h2 class="text-xl sm:text-2xl font-semibold text-gray-300 mb-8">
+                    Your Authority Builder for the Digital Age
+                </h2>
+                <p class="text-lg text-gray-400 max-w-2xl mx-auto mb-10">
+                    We help influencers, founders, creators and podcasts establish industry authority through **video editing, powerful content, and smart distribution**.
+                </p>
+                <!-- Updated button text and link -->
+                <a href="https://calendly.com/itspratikshit/30min" target="_blank" class="inline-block px-8 py-4 border-2 border-white text-white font-bold text-lg rounded-xl hover:bg-white hover:text-dark-primary transition duration-300 shadow-lg">
+                    BOOK A DISCOVERY CALL
+                </a>
+            </div>
+        </section>
+        
+        <!-- 1.5. Founder VSL Section -->
+        <section id="founder-vsl" class="py-24 p-8 bg-card section-snap">
+            <div class="max-w-6xl mx-auto text-center">
+                <h2 class="text-4xl sm:text-5xl font-extrabold text-white mb-12">
+                    Message From Our Founder
+                </h2>
+                <!-- Video Player Container (Responsive 16:9 aspect ratio) -->
+                <div class="video-container mx-auto max-w-4xl shadow-2xl border-4 border-accent-yellow/50">
+                    <!-- 
+                        NOTE: Replace 'dQw4w9WgXcQ' with your actual YouTube video ID 
+                        The 'enablejsapi=1' parameter is helpful for controlling the video programmatically.
+                    -->
+                    <iframe 
+                        src="https://www.youtube.com/embed/dQw4w9WgXcQ?controls=1&modestbranding=1&rel=0" 
+                        title="Our Founder's Welcome Message" 
+                        frameborder="0" 
+                        allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" 
+                        allowfullscreen
+                        loading="lazy">
+                    </iframe>
+                </div>
+            </div>
+        </section>
+
+        <!-- 2. Stats/Value Proposition Section -->
+        <section id="stats" class="py-24 p-8 section-snap">
+            <div class="max-w-7xl mx-auto text-center">
+                <h2 class="text-4xl sm:text-5xl font-extrabold text-white mb-6">
+                    Data-Driven & Dynamic Content Strategies
+                </h2>
+                <p class="text-gray-400 max-w-3xl mx-auto mb-16">
+                    Our approach is rooted in data, built on dynamic strategies, and focused on real audience growth. We analyze, optimize, and execute tailored solutions that drive views, followers, and revenue.
+                </p>
+
+                <div class="flex flex-col sm:flex-row justify-around items-center space-y-12 sm:space-y-0">
+                    <!-- Stat 1: Views -->
+                    <div class="text-center">
+                        <p class="text-5xl sm:text-6xl font-extrabold text-accent-yellow">$1B+</p>
+                        <p class="mt-2 text-xl text-gray-400">Total Views Generated</p>
+                    </div>
+                    <!-- Stat 2: Followers -->
+                    <div class="text-center">
+                        <p class="text-5xl sm:text-6xl font-extrabold text-accent-yellow">10K+</p>
+                        <p class="mt-2 text-xl text-gray-400">Loyal Followers Gained</p>
+                    </div>
+                    <!-- Stat 3: Campaigns -->
+                    <div class="text-center">
+                        <p class="text-5xl sm:text-6xl font-extrabold text-accent-yellow">50+</p>
+                        <p class="mt-2 text-xl text-gray-400">Successful Campaigns</p>
+                    </div>
+                </div>
+
+                <div class="mt-16">
+                    <a href="#services" class="inline-block px-8 py-4 border-2 border-accent-yellow text-accent-yellow font-bold text-lg rounded-xl hover:bg-accent-yellow hover:text-dark-primary transition duration-300 shadow-lg">
+                        OUR SERVICES
+                    </a>
+                </div>
+            </div>
+        </section>
+
+        <!-- 3. Process Section -->
+        <section id="process" class="py-24 p-8 section-snap">
+            <div class="max-w-7xl mx-auto">
+                <h2 class="text-4xl sm:text-5xl font-extrabold text-white text-center mb-16">
+                    How We Ascend Your Brand
+                </h2>
+                <div class="grid md:grid-cols-3 gap-12">
+                    <!-- Step One: Ideation & Discovery -->
+                    <div class="tilted-box bg-accent-yellow p-8 rounded-xl text-dark-primary shadow-2xl">
+                        <p class="text-sm font-bold uppercase mb-2">Step One</p>
+                        <h3 class="text-3xl font-extrabold mb-4">Discovery Call</h3>
+                        <p class="text-lg">
+                            We analyze your existing content, audience, and goals. We create a video strategy focusing on high-impact ideas and platform optimization to define how we will collaborate.
+                        </p>
+                    </div>
+
+                    <!-- Step Two: Production & Editing -->
+                    <div class="tilted-box bg-blue-500 p-8 rounded-xl text-white shadow-2xl">
+                        <p class="text-sm font-bold uppercase mb-2">Step Two</p>
+                        <h3 class="text-3xl font-extrabold mb-4">Content Onboarding</h3>
+                        <p class="text-lg">
+                            Our team sets up a clear production process. We begin professional video editing, optimization of titles/thumbnails, and setting up the foundations for maximum engagement.
+                        </p>
+                    </div>
+
+                    <!-- Step Three: Distribution & Scaling -->
+                    <div class="tilted-box bg-red-500 p-8 rounded-xl text-white shadow-2xl">
+                        <p class="text-sm font-bold uppercase mb-2">Step Three</p>
+                        <h3 class="text-3xl font-extrabold mb-4">Distribution & Scaling</h3>
+                        <p class="text-lg">
+                            We execute smart distribution across all relevant social platforms (TikTok, Reels, Shorts) and focus heavily on Conversion Rate Optimization (CRO) to turn views into followers and revenue.
+                        </p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- 4. Detailed Services Section -->
+        <section id="services" class="py-24 p-8 section-snap">
+            <div class="max-w-7xl mx-auto text-center">
+                <span class="text-xs uppercase tracking-widest text-gray-400 border border-gray-600 px-3 py-1 rounded-full mb-12 inline-block">OUR SERVICES</span>
+                <div class="grid md:grid-cols-3 gap-8">
+
+                    <!-- Service Column 1: Video Editing Specialist -->
+                    <div class="bg-card p-8 rounded-xl border border-gray-800 shadow-lg text-left">
+                        <h3 class="text-2xl font-bold text-white mb-2">Video Editing Specialist</h3>
+                        <p class="text-sm text-gray-500 mb-6">High-impact, performance-focused video creation.</p>
+                        <ul class="space-y-3 text-gray-300">
+                            <li class="flex items-start"><svg class="w-5 h-5 text-accent-yellow mr-2 mt-1 flex-shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"></path></svg> Short-Form Content (Reels, TikTok)</li>
+                            <li class="flex items-start"><svg class="w-5 h-5 text-accent-yellow mr-2 mt-1 flex-shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"></path></svg> Long-Form Video Production (YouTube)</li>
+                            <li class="flex items-start"><svg class="w-5 h-5 text-accent-yellow mr-2 mt-1 flex-shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"></path></svg> Motion Graphics & B-Roll Integration</li>
+                            <li class="flex items-start"><svg class="w-5 h-5 text-accent-yellow mr-2 mt-1 flex-shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"></path></svg> Sound Design & Color Correction</li>
+                            <li class="flex items-start"><svg class="w-5 h-5 text-accent-yellow mr-2 mt-1 flex-shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"></path></svg> 24/7 Editing Support</li>
+                        </ul>
+                        <a href="https://calendly.com/itspratikshit/30min" target="_blank" class="mt-8 inline-block w-full py-3 border border-gray-600 text-gray-300 rounded-lg font-semibold hover:border-accent-yellow hover:text-accent-yellow transition duration-300 text-center">GET A QUOTE</a>
+                    </div>
+
+                    <!-- Service Column 2: Content Strategy & Ideation -->
+                    <div class="bg-card p-8 rounded-xl border border-gray-800 shadow-lg text-left">
+                        <h3 class="text-2xl font-bold text-white mb-2">Content Strategy & Ideation</h3>
+                        <p class="text-sm text-gray-500 mb-6">Attract more views by ideating new viral concepts.</p>
+                        <ul class="space-y-3 text-gray-300">
+                            <li class="flex items-start"><svg class="w-5 h-5 text-accent-yellow mr-2 mt-1 flex-shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"></path></svg> Audience & Competitor Analysis</li>
+                            <li class="flex items-start"><svg class="w-5 h-5 text-accent-yellow mr-2 mt-1 flex-shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"></path></svg> Viral Concept Generation</li>
+                            <li class="flex items-start"><svg class="w-5 h-5 text-accent-yellow mr-2 mt-1 flex-shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"></path></svg> Title, Hook & Thumbnail Optimization</li>
+                            <li class="flex items-start"><svg class="w-5 h-5 text-accent-yellow mr-2 mt-1 flex-shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"></path></svg> Repurposing Strategy for Old Content</li>
+                            <li class="flex items-start"><svg class="w-5 h-5 text-accent-yellow mr-2 mt-1 flex-shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"></path></svg> Monthly Performance Reporting</li>
+                        </ul>
+                        <a href="https://calendly.com/itspratikshit/30min" target="_blank" class="mt-8 inline-block w-full py-3 border border-gray-600 text-gray-300 rounded-lg font-semibold hover:border-accent-yellow hover:text-accent-yellow transition duration-300 text-center">GET A QUOTE</a>
+                    </div>
+
+                    <!-- Service Column 3: Smart Distribution & Ads -->
+                    <div class="bg-card p-8 rounded-xl border border-gray-800 shadow-lg text-left">
+                        <h3 class="text-2xl font-bold text-white mb-2">Smart Distribution & Ads</h3>
+                        <p class="text-sm text-gray-500 mb-6">Maximize reach and convert views into paying customers.</p>
+                        <ul class="space-y-3 text-gray-300">
+                            <li class="flex items-start"><svg class="w-5 h-5 text-accent-yellow mr-2 mt-1 flex-shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"></path></svg> Multi-Platform Syndication</li>
+                            <li class="flex items-start"><svg class="w-5 h-5 text-accent-yellow mr-2 mt-1 flex-shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"></path></svg> Paid Content Promotion (Meta/Google Ads)</li>
+                            <li class="flex items-start"><svg class="w-5 h-5 text-accent-yellow mr-2 mt-1 flex-shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"></path></svg> Retargeting & Conversion Optimization</li>
+                            <li class="flex items-start"><svg class="w-5 h-5 text-accent-yellow mr-2 mt-1 flex-shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"></path></svg> Landing Page Copywriting</li>
+                            <li class="flex items-start"><svg class="w-5 h-5 text-accent-yellow mr-2 mt-1 flex-shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"></path></svg> 24/7 Live Campaign Monitoring</li>
+                        </ul>
+                        <a href="https://calendly.com/itspratikshit/30min" target="_blank" class="mt-8 inline-block w-full py-3 border border-gray-600 text-gray-300 rounded-lg font-semibold hover:border-accent-yellow hover:text-accent-yellow transition duration-300 text-center">GET A QUOTE</a>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- 5. Clients Section (Updated with new images and names linked) -->
+        <section id="clients" class="py-24 p-8 section-snap">
+            <div class="max-w-7xl mx-auto text-center">
+                <h2 class="text-4xl sm:text-5xl font-extrabold text-white mb-16">
+                    Our Star Clients
+                </h2>
+                
+                <div class="flex flex-wrap justify-center gap-x-16 gap-y-12">
+                    
+                    <!-- Client 1: Erick Ronaldo -->
+                    <div class="flex flex-col items-center w-40 text-center">
+                        <!-- Client image (Using new uploaded image URL) -->
+                        <div class="w-32 h-32 rounded-full bg-card flex items-center justify-center border-4 border-accent-yellow/50 overflow-hidden mb-3">
+                            <img src="uploaded:image_c7e4b9.png-978368e2-0f72-465c-8c13-b2ec14fa166e" onerror="this.onerror=null; this.src='https://placehold.co/128x128/3B82F6/ffffff?text=Erick';" alt="Erick Ronaldo Profile" class="w-full h-full object-cover">
+                        </div>
+                        <!-- Name linked to Instagram -->
+                        <a href="https://www.instagram.com/_erickronaldo_" target="_blank" class="text-xl font-semibold text-white hover:text-accent-yellow transition duration-300">
+                            Erick Ronaldo
+                        </a>
+                        <p class="text-sm text-gray-500 mt-1">Creator / Influencer</p>
+                    </div>
+
+                    <!-- Client 2: Eugene Litman -->
+                    <div class="flex flex-col items-center w-40 text-center">
+                        <!-- Client image (Using new uploaded image URL) -->
+                        <div class="w-32 h-32 rounded-full bg-card flex items-center justify-center border-4 border-accent-yellow/50 overflow-hidden mb-3">
+                            <img src="uploaded:image_c7e499.png-67edc293-54c7-48fd-9fc1-3f80ce8aea97" onerror="this.onerror=null; this.src='https://placehold.co/128x128/EC4899/ffffff?text=Eugene';" alt="Eugene Litman Profile" class="w-full h-full object-cover">
+                        </div>
+                        <!-- Name linked to Instagram -->
+                        <a href="https://www.instagram.com/eugenelitman_" target="_blank" class="text-xl font-semibold text-white hover:text-accent-yellow transition duration-300">
+                            Eugene Litman
+                        </a>
+                        <p class="text-sm text-gray-500 mt-1">Entrepreneur / Coach</p>
+                    </div>
+
+                    <!-- Client 3: Beyond Woke -->
+                    <div class="flex flex-col items-center w-40 text-center">
+                        <!-- Client image (Using existing Beyond Woke image) -->
+                        <div class="w-32 h-32 rounded-full bg-card flex items-center justify-center border-4 border-accent-yellow/50 overflow-hidden mb-3">
+                            <img src="uploaded:image_c7f39e.png-02cb9c40-dd78-4ccf-8bf7-d4e4ef6010f8" onerror="this.onerror=null; this.src='https://placehold.co/128x128/10B981/ffffff?text=WOKE';" alt="Beyond Woke Logo" class="w-full h-full object-cover">
+                        </div>
+                        <!-- Name linked to YouTube -->
+                        <a href="https://www.youtube.com/@BeyondWoke1" target="_blank" class="text-xl font-semibold text-white hover:text-accent-yellow transition duration-300">
+                            Beyond Woke
+                        </a>
+                        <p class="text-sm text-gray-500 mt-1">Podcast / Media Brand</p>
+                    </div>
+                    
+                </div>
+            </div>
+        </section>
+
+        <!-- 6. FAQ Section -->
+        <section id="faq" class="py-24 p-8 section-snap">
+            <div class="max-w-4xl mx-auto">
+                <h2 class="text-4xl sm:text-5xl font-extrabold text-white text-center mb-16">
+                    Your questions, answered
+                </h2>
+                <div id="accordion-container" class="space-y-4">
+                    <!-- FAQ Item 1 -->
+                    <div class="bg-card rounded-xl shadow-lg border border-gray-700">
+                        <button class="faq-toggle flex justify-between items-center w-full p-6 text-xl font-semibold text-white hover:text-accent-yellow transition duration-300" data-target="faq-1">
+                            <span>How long does it take to see results?</span>
+                            <span class="faq-icon text-2xl">+</span>
+                        </button>
+                        <div id="faq-1" class="faq-content p-6 pt-0 text-gray-400 hidden">
+                            <p>Results vary based on your current standing and the chosen strategy. Typically, you will start seeing significant improvements in content performance and audience engagement within 4-6 weeks, with sustained growth building over the following months.</p>
+                        </div>
+                    </div>
+                    <!-- FAQ Item 2 -->
+                    <div class="bg-card rounded-xl shadow-lg border border-gray-700">
+                        <button class="faq-toggle flex justify-between items-center w-full p-6 text-xl font-semibold text-white hover:text-accent-yellow transition duration-300" data-target="faq-2">
+                            <span>Do you offer one-time services or only monthly packages?</span>
+                            <span class="faq-icon text-2xl">+</span>
+                        </button>
+                        <div id="faq-2" class="faq-content p-6 pt-0 text-gray-400 hidden">
+                            <p>We offer both! While our monthly packages provide the best long-term growth and dedicated support, we also provide one-time consultation or setup services for specific needs like channel audits or strategy blueprints.</p>
+                        </div>
+                    </div>
+                    <!-- FAQ Item 3 -->
+                    <div class="bg-card rounded-xl shadow-lg border border-gray-700">
+                        <button class="faq-toggle flex justify-between items-center w-full p-6 text-xl font-semibold text-white hover:text-accent-yellow transition duration-300" data-target="faq-3">
+                            <span>How do you measure the success of campaigns?</span>
+                            <span class="faq-icon text-2xl">+</span>
+                        </button>
+                        <div id="faq-3" class="faq-content p-6 pt-0 text-gray-400 hidden">
+                            <p>We focus on key performance indicators (KPIs) beyond vanity metrics. This includes audience retention, follower-to-view conversion rates, content virality score, and ultimately, the revenue/leads generated directly from your content.</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- 7. Final Call to Action / Contact Section -->
+        <section id="contact" class="py-24 p-8 section-snap bg-card">
+            <div class="max-w-4xl mx-auto text-center">
+                <h2 class="text-4xl sm:text-5xl font-extrabold text-white mb-6">
+                    Ready to level up your content?
+                </h2>
+                <p class="text-lg text-gray-400 max-w-2xl mx-auto mb-10">
+                    Let's connect and discuss a tailored strategy to convert your views into industry authority and loyal followers.
+                </p>
+                <!-- Updated button text and link -->
+                <a href="https://calendly.com/itspratikshit/30min" target="_blank" class="inline-block px-10 py-4 bg-accent-yellow text-dark-primary font-bold text-xl rounded-xl hover:bg-yellow-400 transition duration-300 shadow-xl">
+                    BOOK A DISCOVERY CALL
+                </a>
+            </div>
+        </section>
+    </main>
+
+    <!-- Footer -->
+    <footer class="py-10 text-center text-gray-500 text-sm border-t border-gray-800">
+        <div class="max-w-7xl mx-auto px-4">
+            <p>&copy; 2025 BrandsAscend. All rights reserved.</p>
+        </div>
+    </footer>
+
+    <!-- JavaScript for FAQ Accordion -->
+    <script>
+        document.addEventListener('DOMContentLoaded', () => {
+            const toggles = document.querySelectorAll('.faq-toggle');
+
+            toggles.forEach(toggle => {
+                toggle.addEventListener('click', () => {
+                    const targetId = toggle.getAttribute('data-target');
+                    const content = document.getElementById(targetId);
+                    const icon = toggle.querySelector('.faq-icon');
+
+                    // Close all other open FAQs
+                    document.querySelectorAll('.faq-content').forEach(otherContent => {
+                        if (otherContent.id !== targetId && !otherContent.classList.contains('hidden')) {
+                            otherContent.classList.add('hidden');
+                            otherContent.previousElementSibling.querySelector('.faq-icon').textContent = '+';
+                        }
+                    });
+
+                    // Toggle the clicked FAQ
+                    content.classList.toggle('hidden');
+                    icon.textContent = content.classList.contains('hidden') ? '+' : '−';
+                });
+            });
+        });
+    </script>
+
+</body>
+</html>
