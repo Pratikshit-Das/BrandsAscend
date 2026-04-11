@@ -87,14 +87,18 @@ nav{
 
 /* HERO */
 .hero{
-  min-height:100vh;padding:100px 48px 60px;
-  display:grid;
-  grid-template-columns:1fr 1fr;
-  align-items:center;
+  min-height:100vh;
+  padding:100px 48px 60px;
+  display:flex;
+  flex-direction:column;
+  justify-content:center;
   gap:48px;
   position:relative;overflow:hidden;
 }
-.hero-left{display:flex;flex-direction:column;justify-content:center;}
+.hero-left{
+  display:flex;flex-direction:column;justify-content:center;
+  max-width:700px;
+}
 .hero-eyebrow{
   display:inline-flex;align-items:center;gap:8px;
   font-size:11px;font-weight:700;letter-spacing:0.18em;
@@ -110,7 +114,7 @@ nav{
 @keyframes blink{0%,100%{opacity:1}50%{opacity:0.2}}
 .hero h1{
   font-family:'Instrument Serif',serif;
-  font-size:clamp(44px,5.5vw,86px);
+  font-size:clamp(44px,6vw,96px);
   line-height:0.95;letter-spacing:-2px;
   margin-bottom:24px;color:var(--ink);
 }
@@ -123,11 +127,10 @@ nav{
 }
 .hero-desc{
   font-size:15px;color:var(--muted);line-height:1.75;
-  margin-bottom:32px;max-width:400px;
+  margin-bottom:32px;max-width:480px;
 }
 .hero-cta-block{
-  display:flex;flex-direction:column;
-  align-items:flex-start;gap:12px;
+  display:flex;align-items:center;gap:20px;flex-wrap:wrap;
 }
 .btn-big{
   display:inline-flex;align-items:center;gap:10px;
@@ -154,37 +157,24 @@ nav{
   cursor:pointer;background:none;border:none;
   font-family:'Familjen Grotesk',sans-serif;
 }
-.hero-scroll-row{
-  display:flex;align-items:center;gap:12px;
-  margin-top:32px;
-  font-size:11px;letter-spacing:0.12em;text-transform:uppercase;
-  color:var(--muted2);
-}
-.scroll-line{
-  width:36px;height:1px;background:var(--muted2);
-  animation:spulse 2s ease-in-out infinite;
-}
-@keyframes spulse{0%,100%{width:36px}50%{width:16px}}
 
-/* HERO RIGHT — TWO TESTIMONIALS */
+/* HERO RIGHT — THREE TESTIMONIALS */
 .hero-right{
-  display:flex;flex-direction:column;
-  gap:12px;
-  height:calc(100vh - 120px);
-  max-height:760px;
+  display:flex;flex-direction:column;gap:12px;width:100%;
 }
 .tstack{
-  display:grid;grid-template-columns:1fr 1fr;
-  gap:12px;flex:1;min-height:0;
+  display:grid;grid-template-columns:repeat(3,1fr);
+  gap:16px;
 }
 .tstack-item{
-  display:flex;flex-direction:column;gap:8px;min-height:0;
+  display:flex;flex-direction:column;gap:8px;
 }
 .tstack-frame{
-  flex:1;border-radius:12px;overflow:hidden;
+  border-radius:12px;overflow:hidden;
   border:1px solid var(--border);
-  box-shadow:0 12px 40px rgba(13,13,11,0.1);
-  position:relative;min-height:0;
+  box-shadow:0 12px 40px rgba(13,13,11,0.08);
+  position:relative;
+  aspect-ratio:9/16;
 }
 .tstack-frame iframe{
   position:absolute;inset:0;
@@ -610,14 +600,8 @@ footer{
   #cursor,#cursor-ring{display:none}
   nav{padding:16px 20px}
   .nav-links{display:none}
-  .hero{
-    grid-template-columns:1fr;padding:100px 20px 40px;
-    min-height:auto;gap:32px;
-  }
-  .hero-right{height:auto;max-height:none}
-  .tstack{grid-template-columns:1fr 1fr}
-  .tstack-frame{aspect-ratio:9/16;position:relative;flex:none}
-  .tstack-frame iframe{position:absolute;inset:0;width:100%;height:100%}
+  .hero{padding:100px 20px 40px;gap:32px;}
+  .tstack{grid-template-columns:1fr}
   .process-section,.services-section,.clients-section,
   .videos-section,.faq-section,.founder,.cta-finale{padding:80px 20px}
   .stats-row{grid-template-columns:1fr}
@@ -650,7 +634,7 @@ footer{
 
 <!-- HERO -->
 <section class="hero">
-  <!-- LEFT: copy -->
+  <!-- TOP: copy -->
   <div class="hero-left">
     <div class="hero-eyebrow reveal">
       <span class="hero-dot"></span>
@@ -671,25 +655,37 @@ footer{
       </a>
       <button class="btn-sm-ghost" onclick="document.getElementById('founder-section').scrollIntoView({behavior:'smooth'})">Watch our story first</button>
     </div>
-    <div class="hero-scroll-row reveal" style="transition-delay:.35s">
-      <div class="scroll-line"></div>
-      Scroll to explore
-    </div>
   </div>
 
-  <!-- RIGHT: two testimonials stacked -->
+  <!-- BOTTOM: three testimonials -->
   <div class="hero-right reveal" style="transition-delay:.15s">
     <div class="testimonial-badge">
       <span class="tbadge-dot"></span>
       Client Testimonials
     </div>
-
     <div class="tstack">
+
+      <!-- Erick — plays first / unmuted -->
+      <div class="tstack-item">
+        <div class="tstack-frame">
+          <iframe
+            src="https://www.youtube.com/embed/DWEwluTAsR8?autoplay=1&mute=0&loop=1&playlist=DWEwluTAsR8&controls=1&rel=0&playsinline=1"
+            title="Testimonial — Erick Ronaldo"
+            allow="autoplay; fullscreen; picture-in-picture"
+            allowfullscreen>
+          </iframe>
+        </div>
+        <div class="tstack-credit">
+          <img class="tcredit-img" src="https://i.ibb.co/YBv9ZhJF/image.png" alt="Erick">
+          <div class="tcredit-text"><strong>Erick Ronaldo</strong>@_erickronaldo_</div>
+        </div>
+      </div>
+
       <!-- Mike -->
       <div class="tstack-item">
         <div class="tstack-frame">
           <iframe
-            src="https://www.youtube.com/embed/LijwnStyfF8?autoplay=1&mute=0&loop=1&playlist=LijwnStyfF8&controls=1&rel=0&playsinline=1"
+            src="https://www.youtube.com/embed/LijwnStyfF8?autoplay=1&mute=1&loop=1&playlist=LijwnStyfF8&controls=1&rel=0&playsinline=1"
             title="Testimonial — Confidence By Mike"
             allow="autoplay; fullscreen; picture-in-picture"
             allowfullscreen>
@@ -716,8 +712,8 @@ footer{
           <div class="tcredit-text"><strong>Victor</strong>@victormlno</div>
         </div>
       </div>
-    </div>
 
+    </div>
   </div>
 </section>
 
