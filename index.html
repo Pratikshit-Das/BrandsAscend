@@ -3,615 +3,849 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>BrandsAscend — Full-Stack Content for Creators Who Mean Business</title>
+<title>Pratikshit — Your Growth Partner for Coaches & Creators</title>
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Instrument+Serif:ital@0;1&family=Familjen+Grotesk:wght@400;500;600;700&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,500;0,700;1,400;1,700&family=Outfit:wght@300;400;500;600;700&display=swap" rel="stylesheet">
 <style>
 *,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
 :root{
-  --ink:#0D0D0B;
-  --page:#F5F2EA;
-  --page2:#EDEAE0;
-  --lime:#C6F135;
-  --lime-dk:#9DC010;
-  --muted:#7A786E;
-  --muted2:#B0AEA5;
-  --border:#D8D4C8;
+  --ink:#1A1612;
+  --off-white:#FDFAF5;
+  --warm-gray:#F2EDE5;
+  --warm-gray2:#E8E0D4;
+  --accent:#D4581A;
+  --accent-lt:#E87040;
+  --accent-pale:#FFF0E8;
+  --green:#2A6B4A;
+  --green-lt:#3A8A5F;
+  --muted:#7C6F65;
+  --muted2:#B0A49A;
+  --border:#DDD5C8;
+  --border-dk:#C8BDB0;
   --white:#FFFFFF;
 }
 html{scroll-behavior:smooth;cursor:none}
 body{
-  background:var(--page);
+  background:var(--off-white);
   color:var(--ink);
-  font-family:'Familjen Grotesk',sans-serif;
+  font-family:'Outfit',sans-serif;
   font-size:16px;
-  line-height:1.6;
+  line-height:1.65;
   overflow-x:hidden;
 }
 
-/* CUSTOM CURSOR */
+/* CURSOR */
 #cursor{
-  position:fixed;width:10px;height:10px;
-  background:var(--ink);border-radius:50%;
+  position:fixed;width:8px;height:8px;
+  background:var(--accent);border-radius:50%;
   pointer-events:none;z-index:9999;
   transform:translate(-50%,-50%);
-  transition:width .25s,height .25s,background .25s;
-  mix-blend-mode:multiply;
+  transition:width .2s,height .2s,background .2s;
 }
 #cursor-ring{
-  position:fixed;width:36px;height:36px;
-  border:1.5px solid var(--ink);border-radius:50%;
+  position:fixed;width:34px;height:34px;
+  border:1.5px solid rgba(212,88,26,0.35);border-radius:50%;
   pointer-events:none;z-index:9998;
   transform:translate(-50%,-50%);
-  opacity:0.4;
-  transition:width .4s cubic-bezier(.23,1,.32,1),
-             height .4s cubic-bezier(.23,1,.32,1),
-             opacity .3s, border-color .3s;
+  transition:width .35s cubic-bezier(.23,1,.32,1),height .35s cubic-bezier(.23,1,.32,1),opacity .3s;
 }
-body.hover-cta #cursor{width:54px;height:54px;background:var(--lime)}
+body.hover-cta #cursor{width:50px;height:50px;background:var(--accent)}
 body.hover-cta #cursor-ring{width:0;height:0;opacity:0}
 
 /* NAV */
 nav{
   position:fixed;top:0;left:0;right:0;z-index:100;
   display:flex;align-items:center;justify-content:space-between;
-  padding:18px 48px;
-  background:rgba(245,242,234,0.88);
+  padding:22px 56px;
+  background:rgba(253,250,245,0.93);
   backdrop-filter:blur(16px);
   border-bottom:1px solid var(--border);
 }
+.nav-brand{display:flex;flex-direction:column;gap:1px}
 .nav-logo{
-  font-family:'Instrument Serif',serif;
-  font-size:19px;color:var(--ink);text-decoration:none;
-  letter-spacing:-0.3px;
+  font-family:'Playfair Display',serif;
+  font-size:20px;color:var(--ink);text-decoration:none;
+  letter-spacing:0.01em;font-weight:700;line-height:1;
 }
-.nav-logo em{font-style:italic;color:var(--muted)}
-.nav-links{display:flex;gap:32px;list-style:none}
+.nav-logo em{font-style:italic;color:var(--accent);font-weight:400}
+.nav-niche{
+  font-size:9px;font-weight:500;letter-spacing:0.18em;text-transform:uppercase;
+  color:var(--muted2);
+}
+.nav-links{display:flex;gap:36px;list-style:none}
 .nav-links a{
-  color:var(--muted);font-size:13px;font-weight:500;
-  text-decoration:none;letter-spacing:0.02em;
+  color:var(--muted);font-size:12px;font-weight:500;
+  text-decoration:none;letter-spacing:0.1em;text-transform:uppercase;
   transition:color .2s;
 }
 .nav-links a:hover{color:var(--ink)}
-.nav-pill{
-  background:var(--ink);color:var(--page);
-  font-family:'Familjen Grotesk',sans-serif;
-  font-size:12px;font-weight:700;letter-spacing:0.08em;
-  text-transform:uppercase;padding:10px 20px;
-  text-decoration:none;border-radius:100px;
+.nav-cta{
+  background:var(--accent);color:var(--white);
+  font-size:11px;font-weight:600;letter-spacing:0.12em;
+  text-transform:uppercase;padding:11px 24px;
+  text-decoration:none;
   transition:background .2s,transform .15s;
   display:inline-block;
 }
-.nav-pill:hover{background:var(--lime);color:var(--ink);transform:scale(1.03)}
+.nav-cta:hover{background:var(--accent-lt);transform:translateY(-1px)}
 
-/* HERO */
+/* TOP TESTIMONIALS */
+.top-testimonials{
+  background:var(--ink);
+  padding:110px 56px 80px;
+  border-bottom:1px solid rgba(255,255,255,0.05);
+}
+.tt-header{
+  display:flex;flex-direction:column;align-items:center;
+  text-align:center;margin-bottom:56px;
+}
+.tt-badge{
+  display:inline-flex;align-items:center;gap:8px;
+  background:rgba(212,88,26,0.12);
+  border:1px solid rgba(212,88,26,0.25);
+  padding:8px 18px;
+  font-size:10px;font-weight:600;letter-spacing:0.16em;
+  text-transform:uppercase;color:var(--accent);
+  margin-bottom:24px;
+}
+.tt-dot{
+  width:6px;height:6px;border-radius:50%;
+  background:var(--accent);
+  animation:blink 2s ease-in-out infinite;flex-shrink:0;
+}
+.tt-title{
+  font-family:'Playfair Display',serif;
+  font-size:clamp(32px,4vw,52px);
+  line-height:1.05;color:var(--off-white);
+  font-weight:700;
+}
+.tt-title em{font-style:italic;color:var(--accent);font-weight:400}
+.tt-videos{
+  display:grid;grid-template-columns:1fr 1fr 1fr;
+  gap:32px;max-width:960px;margin:0 auto;
+}
+.tt-video-item{display:flex;flex-direction:column;gap:16px}
+.tt-frame{
+  position:relative;width:100%;
+  padding-bottom:56.25%;
+  overflow:hidden;
+  border:1px solid rgba(255,255,255,0.08);
+}
+.tt-frame iframe{
+  position:absolute;inset:0;
+  width:100%;height:100%;border:none;
+}
+.tt-credit{
+  display:flex;align-items:center;gap:12px;
+}
+.tt-avatar{
+  width:36px;height:36px;border-radius:50%;
+  object-fit:cover;
+  border:2px solid rgba(212,88,26,0.3);flex-shrink:0;
+}
+.tt-credit-text{display:flex;flex-direction:column;gap:1px}
+.tt-credit-text strong{font-size:13px;font-weight:600;color:var(--off-white)}
+.tt-credit-text span{font-size:11px;color:rgba(253,250,245,0.35);letter-spacing:0.04em}
+
+/* TOP TESTIMONIALS - mobile */
+@media(max-width:900px){
+  .top-testimonials{padding:100px 20px 60px}
+  .tt-videos{grid-template-columns:1fr}
+}
+
+/* ── HERO ── */
 .hero{
-  min-height:100vh;
-  padding:100px 48px 60px;
-  display:flex;
-  flex-direction:column;
-  justify-content:center;
-  gap:48px;
+  min-height:auto;
+  display:grid;
+  grid-template-columns:55% 45%;
+  align-items:center;
+  padding-top:0;
   position:relative;overflow:hidden;
+  background:var(--off-white);
+  border-bottom:1px solid var(--border);
+}
+/* warm texture overlay */
+.hero::after{
+  content:'';position:absolute;inset:0;
+  background:radial-gradient(ellipse 70% 60% at 80% 50%, rgba(212,88,26,0.05) 0%, transparent 70%);
+  pointer-events:none;
 }
 .hero-left{
+  padding:72px 56px 72px;
   display:flex;flex-direction:column;justify-content:center;
-  max-width:700px;
+  position:relative;z-index:1;
 }
-.hero-eyebrow{
-  display:inline-flex;align-items:center;gap:8px;
-  font-size:11px;font-weight:700;letter-spacing:0.18em;
-  text-transform:uppercase;color:var(--muted);
-  margin-bottom:28px;
+.hero-tag{
+  display:inline-flex;align-items:center;gap:10px;
+  background:var(--accent-pale);
+  border:1px solid rgba(212,88,26,0.2);
+  padding:8px 18px;
+  align-self:flex-start;
+  margin-bottom:36px;
 }
-.hero-dot{
-  width:7px;height:7px;border-radius:50%;
-  background:var(--lime);border:1px solid var(--lime-dk);
-  animation:blink 1.8s ease-in-out infinite;
-  flex-shrink:0;
+.hero-tag-dot{
+  width:6px;height:6px;border-radius:50%;
+  background:var(--accent);
+  animation:blink 2s ease-in-out infinite;flex-shrink:0;
 }
 @keyframes blink{0%,100%{opacity:1}50%{opacity:0.2}}
-.hero h1{
-  font-family:'Instrument Serif',serif;
-  font-size:clamp(44px,6vw,96px);
-  line-height:0.95;letter-spacing:-2px;
-  margin-bottom:24px;color:var(--ink);
+.hero-tag-text{
+  font-size:11px;font-weight:600;letter-spacing:0.16em;
+  text-transform:uppercase;color:var(--accent);
 }
-.hero h1 em{font-style:italic;color:var(--muted);}
-.hero h1 .pill-word{
-  display:inline-flex;align-items:center;
-  background:var(--lime);color:var(--ink);
-  padding:0 18px 6px;border-radius:100px;
-  font-style:normal;
+.hero h1{
+  font-family:'Playfair Display',serif;
+  font-size:clamp(46px,5vw,80px);
+  line-height:1;letter-spacing:-0.5px;
+  color:var(--ink);margin-bottom:12px;font-weight:700;
+}
+.hero h1 em{font-style:italic;color:var(--accent);font-weight:400}
+.hero-sub{
+  font-family:'Playfair Display',serif;
+  font-size:clamp(20px,2.2vw,30px);
+  color:var(--muted);font-style:italic;font-weight:400;
+  margin-bottom:32px;line-height:1.3;
 }
 .hero-desc{
-  font-size:15px;color:var(--muted);line-height:1.75;
-  margin-bottom:32px;max-width:480px;
+  font-size:16px;color:var(--muted);line-height:1.8;
+  margin-bottom:44px;max-width:480px;font-weight:300;
 }
-.hero-cta-block{
-  display:flex;align-items:center;gap:20px;flex-wrap:wrap;
-}
-.btn-big{
+.hero-desc strong{color:var(--ink);font-weight:600}
+.hero-actions{display:flex;align-items:center;gap:20px;flex-wrap:wrap}
+.btn-primary{
   display:inline-flex;align-items:center;gap:10px;
-  background:var(--ink);color:var(--page);
-  font-family:'Familjen Grotesk',sans-serif;
-  font-size:14px;font-weight:700;letter-spacing:0.06em;
-  text-transform:uppercase;padding:18px 32px;
-  border-radius:100px;text-decoration:none;
-  transition:background .2s,transform .15s;
-  white-space:nowrap;
+  background:var(--accent);color:var(--white);
+  font-size:13px;font-weight:600;letter-spacing:0.1em;
+  text-transform:uppercase;padding:17px 36px;
+  text-decoration:none;
+  transition:background .2s,transform .15s,box-shadow .2s;
 }
-.btn-big .arrow{
-  display:inline-flex;align-items:center;justify-content:center;
-  width:22px;height:22px;border-radius:50%;
-  background:var(--lime);color:var(--ink);
-  font-size:14px;flex-shrink:0;
-  transition:transform .25s cubic-bezier(.23,1,.32,1);
+.btn-primary:hover{background:var(--accent-lt);transform:translateY(-2px);box-shadow:0 12px 32px rgba(212,88,26,0.2)}
+.btn-primary .arr{transition:transform .2s}
+.btn-primary:hover .arr{transform:translateX(4px)}
+.btn-ghost{
+  font-size:13px;color:var(--muted);font-weight:500;
+  text-decoration:none;border-bottom:1px solid var(--border-dk);
+  padding-bottom:2px;transition:color .2s,border-color .2s;
+  cursor:pointer;background:none;border-top:none;border-left:none;border-right:none;
+  font-family:'Outfit',sans-serif;
 }
-.btn-big:hover{background:var(--lime);color:var(--ink)}
-.btn-big:hover .arrow{transform:rotate(45deg)}
-.btn-sm-ghost{
-  font-size:12px;color:var(--muted);
-  text-decoration:underline;text-underline-offset:3px;
-  cursor:pointer;background:none;border:none;
-  font-family:'Familjen Grotesk',sans-serif;
-}
+.btn-ghost:hover{color:var(--ink);border-color:var(--ink)}
 
-/* HERO RIGHT — THREE TESTIMONIALS */
+/* HERO PARTNER CARD (right side) */
 .hero-right{
-  display:flex;flex-direction:column;gap:12px;width:100%;
+  display:flex;align-items:center;justify-content:center;
+  padding:72px 56px 72px 20px;
+  position:relative;z-index:1;
 }
-.tstack{
-  display:grid;grid-template-columns:repeat(3,1fr);
-  gap:16px;
-}
-.tstack-item{
-  display:flex;flex-direction:column;gap:8px;
-}
-.tstack-frame{
-  border-radius:12px;overflow:hidden;
+.partner-card{
+  background:var(--white);
   border:1px solid var(--border);
-  box-shadow:0 12px 40px rgba(13,13,11,0.08);
+  padding:44px 40px;
+  width:100%;max-width:400px;
+  box-shadow:0 24px 64px rgba(26,22,18,0.08);
   position:relative;
-  aspect-ratio:9/16;
 }
-.tstack-frame iframe{
-  position:absolute;inset:0;
-  width:100%;height:100%;border:none;display:block;
+.partner-card::before{
+  content:'';position:absolute;top:0;left:0;right:0;
+  height:3px;
+  background:linear-gradient(90deg,var(--accent),var(--accent-lt));
 }
-.tstack-credit{
-  display:flex;align-items:center;gap:8px;flex-shrink:0;
+.pc-label{
+  font-size:10px;font-weight:600;letter-spacing:0.18em;text-transform:uppercase;
+  color:var(--muted2);margin-bottom:20px;
 }
-.tstack-credit .tcredit-img{
-  width:24px;height:24px;border-radius:50%;
-  object-fit:cover;border:1.5px solid var(--border);flex-shrink:0;
+.pc-quote{
+  font-family:'Playfair Display',serif;
+  font-size:22px;line-height:1.4;
+  color:var(--ink);font-style:italic;font-weight:400;
+  margin-bottom:28px;
 }
-.tstack-credit .tcredit-text{font-size:11px;color:var(--muted);line-height:1.3}
-.tstack-credit .tcredit-text strong{display:block;color:var(--ink);font-weight:700;font-size:12px}
+.pc-quote span{color:var(--accent)}
+.pc-divider{height:1px;background:var(--border);margin-bottom:28px}
+.pc-promises{display:flex;flex-direction:column;gap:14px;margin-bottom:32px}
+.pc-promise{
+  display:flex;align-items:flex-start;gap:12px;
+}
+.pc-check{
+  width:20px;height:20px;background:var(--accent-pale);
+  border:1px solid rgba(212,88,26,0.2);
+  display:flex;align-items:center;justify-content:center;
+  flex-shrink:0;margin-top:2px;font-size:10px;color:var(--accent);
+}
+.pc-promise-text{font-size:14px;color:var(--muted);line-height:1.5;font-weight:400}
+.pc-promise-text strong{color:var(--ink);font-weight:600}
+.pc-footer{
+  background:var(--warm-gray);
+  margin:-44px -40px -44px;
+  padding:18px 40px;
+  margin-top:0;
+  display:flex;align-items:center;gap:10px;
+}
+.pc-footer-dot{width:8px;height:8px;border-radius:50%;background:var(--green);animation:blink 2s ease-in-out infinite}
+.pc-footer-text{font-size:12px;color:var(--muted);font-weight:500}
+.pc-footer-text strong{color:var(--ink)}
 
-/* TICKER */
-.ticker-wrap{
-  background:var(--ink);overflow:hidden;
-  padding:13px 0;
-  white-space:nowrap;
+/* GROWTH STRIP (replaces ticker) */
+.growth-strip{
+  background:var(--ink);
+  padding:0;overflow:hidden;
 }
-.ticker-track{
-  display:inline-flex;
-  animation:ticker 28s linear infinite;
+.growth-strip-inner{
+  display:flex;
 }
-@keyframes ticker{0%{transform:translateX(0)}100%{transform:translateX(-50%)}}
-.ticker-item{
-  display:inline-flex;align-items:center;gap:10px;
-  padding:0 28px;
-  font-size:11px;font-weight:700;letter-spacing:0.12em;
-  text-transform:uppercase;color:rgba(245,242,234,0.4);
+.growth-block{
+  flex:1;
+  padding:32px 40px;
+  border-right:1px solid rgba(255,255,255,0.06);
+  display:flex;align-items:center;gap:14px;
 }
-.tk-star{color:var(--lime);font-size:14px}
+.growth-block:last-child{border-right:none}
+.growth-icon{
+  font-size:22px;flex-shrink:0;
+  width:42px;height:42px;
+  background:rgba(212,88,26,0.15);
+  display:flex;align-items:center;justify-content:center;
+}
+.growth-block-text{}
+.growth-block-title{
+  font-size:13px;font-weight:600;color:var(--off-white);
+  margin-bottom:2px;
+}
+.growth-block-sub{
+  font-size:11px;color:rgba(253,250,245,0.35);
+  letter-spacing:0.04em;
+}
+
+/* ABOUT / PARTNER PHILOSOPHY */
+.philosophy{
+  padding:120px 56px;
+  background:var(--off-white);
+  display:grid;
+  grid-template-columns:1fr 1fr;
+  gap:80px;
+  align-items:center;
+  border-bottom:1px solid var(--border);
+}
+.philosophy-left{}
+.section-label{
+  font-size:10px;font-weight:600;letter-spacing:0.2em;text-transform:uppercase;
+  color:var(--accent);margin-bottom:20px;display:block;
+}
+.section-title{
+  font-family:'Playfair Display',serif;
+  font-size:clamp(34px,4vw,54px);
+  line-height:1.05;letter-spacing:-0.3px;
+  font-weight:700;color:var(--ink);
+  margin-bottom:24px;
+}
+.section-title em{font-style:italic;color:var(--accent);font-weight:400}
+.philosophy-body{
+  font-size:15px;color:var(--muted);line-height:1.85;
+  font-weight:300;
+}
+.philosophy-body p{margin-bottom:20px}
+.philosophy-body p:last-child{margin-bottom:0}
+.philosophy-body strong{color:var(--ink);font-weight:600}
+.philosophy-right{
+  display:flex;flex-direction:column;gap:20px;
+}
+.diff-card{
+  background:var(--white);
+  border:1px solid var(--border);
+  padding:28px 30px;
+  display:flex;gap:20px;align-items:flex-start;
+  transition:border-color .25s,box-shadow .25s,transform .25s;
+}
+.diff-card:hover{
+  border-color:var(--accent);
+  box-shadow:0 8px 32px rgba(212,88,26,0.08);
+  transform:translateX(4px);
+}
+.diff-num{
+  font-family:'Playfair Display',serif;
+  font-size:36px;font-weight:700;color:rgba(212,88,26,0.15);
+  line-height:1;flex-shrink:0;margin-top:-4px;
+  transition:color .25s;
+}
+.diff-card:hover .diff-num{color:var(--accent)}
+.diff-body{}
+.diff-title{font-size:15px;font-weight:600;color:var(--ink);margin-bottom:6px}
+.diff-desc{font-size:13px;color:var(--muted);line-height:1.65;font-weight:300}
 
 /* STATS */
 .stats-row{
   display:grid;grid-template-columns:repeat(3,1fr);
-  background:var(--white);
+  background:var(--warm-gray);
   border-top:1px solid var(--border);
   border-bottom:1px solid var(--border);
 }
 .stat-cell{
-  padding:60px 48px;
+  padding:64px 56px;
   border-right:1px solid var(--border);
+  position:relative;overflow:hidden;
   transition:background .25s;
 }
 .stat-cell:last-child{border-right:none}
-.stat-cell:hover{background:var(--lime)}
-.stat-cell:hover .stat-label{color:rgba(13,13,11,0.6)}
+.stat-cell::after{
+  content:'';position:absolute;bottom:0;left:0;
+  width:0;height:2px;background:var(--accent);
+  transition:width .4s cubic-bezier(.23,1,.32,1);
+}
+.stat-cell:hover::after{width:100%}
+.stat-cell:hover{background:var(--white)}
 .stat-num{
   display:block;
-  font-family:'Instrument Serif',serif;
-  font-size:clamp(52px,7vw,84px);
+  font-family:'Playfair Display',serif;
+  font-size:clamp(52px,6.5vw,80px);
   line-height:1;letter-spacing:-2px;
-  color:var(--ink);margin-bottom:10px;
+  color:var(--ink);margin-bottom:10px;font-weight:700;
 }
+.stat-accent{color:var(--accent)}
 .stat-label{
   font-size:13px;color:var(--muted);
-  font-weight:500;transition:color .25s;
+  font-weight:400;line-height:1.5;
 }
 
 /* FOUNDER */
 .founder{
   background:var(--ink);
-  padding:100px 48px;
+  padding:120px 56px;
+  display:grid;
+  grid-template-columns:1fr 1fr;
+  gap:80px;align-items:center;
 }
-.founder-inner{max-width:860px;margin:0 auto}
-.label-sm{
-  font-size:11px;font-weight:700;letter-spacing:0.18em;
-  text-transform:uppercase;color:var(--muted2);
-  margin-bottom:18px;
+.founder-left{}
+.founder-label{
+  font-size:10px;font-weight:600;letter-spacing:0.2em;text-transform:uppercase;
+  color:var(--accent);margin-bottom:20px;display:block;
 }
-.title-serif{
-  font-family:'Instrument Serif',serif;
-  font-size:clamp(34px,5vw,58px);
-  line-height:1.05;letter-spacing:-1px;
+.founder-title{
+  font-family:'Playfair Display',serif;
+  font-size:clamp(34px,4vw,52px);
+  line-height:1.05;color:var(--off-white);
+  font-weight:700;margin-bottom:24px;
 }
-.title-serif em{font-style:italic}
+.founder-title em{font-style:italic;font-weight:400;color:rgba(253,250,245,0.6)}
+.founder-body{
+  font-size:15px;color:rgba(253,250,245,0.45);
+  line-height:1.85;font-weight:300;margin-bottom:32px;
+}
+.founder-right{}
 .video-wrap{
-  margin-top:40px;
-  border:1px solid rgba(255,255,255,0.1);
-  overflow:hidden;
+  position:relative;overflow:hidden;
+  border:1px solid rgba(255,255,255,0.08);
+}
+.video-wrap::before{
+  content:'';position:absolute;top:0;left:0;right:0;
+  height:2px;background:linear-gradient(90deg,var(--accent),var(--accent-lt));
+  z-index:1;
 }
 .video-wrap iframe{width:100%;aspect-ratio:16/9;display:block;border:none}
 .video-note{
-  margin-top:14px;font-size:12px;color:var(--muted2);
-  text-align:center;letter-spacing:0.03em;
+  margin-top:14px;font-size:11px;color:rgba(253,250,245,0.25);
+  text-align:center;letter-spacing:0.08em;text-transform:uppercase;
 }
 
 /* PROCESS */
-.process-section{padding:100px 48px;background:var(--page)}
+.process-section{
+  padding:120px 56px;
+  background:var(--off-white);
+  border-bottom:1px solid var(--border);
+}
 .section-head{
   display:flex;align-items:flex-end;
   justify-content:space-between;
-  margin-bottom:56px;gap:32px;flex-wrap:wrap;
+  margin-bottom:64px;gap:32px;flex-wrap:wrap;
 }
 .process-steps{display:grid;gap:0}
 .step{
-  display:grid;grid-template-columns:70px 1fr 40px;
+  display:grid;grid-template-columns:80px 1fr 44px;
   align-items:start;gap:28px;
-  padding:28px 0;
+  padding:32px 0;
   border-top:1px solid var(--border);
   cursor:pointer;
+  transition:background .2s;
 }
 .step:last-child{border-bottom:1px solid var(--border)}
+.step:hover{background:var(--warm-gray);padding-left:16px;padding-right:16px;margin:0 -16px}
 .step-num{
-  font-family:'Instrument Serif',serif;
+  font-family:'Playfair Display',serif;
   font-size:44px;line-height:1;
-  color:var(--muted2);letter-spacing:-2px;
-  transition:color .3s;padding-top:2px;
+  color:var(--border-dk);letter-spacing:-1px;
+  transition:color .3s;padding-top:4px;font-weight:700;
 }
-.step.active .step-num{color:var(--ink)}
+.step.active .step-num{color:var(--accent)}
 .step-title{
-  font-size:18px;font-weight:700;
-  color:var(--ink);margin-bottom:0;padding-top:6px;
+  font-size:18px;font-weight:600;
+  color:var(--ink);margin-bottom:0;padding-top:8px;
 }
 .step-desc{
   font-size:14px;color:var(--muted);
-  line-height:1.7;max-height:0;overflow:hidden;
+  line-height:1.8;max-height:0;overflow:hidden;
   transition:max-height .4s cubic-bezier(.23,1,.32,1),margin .3s;
+  font-weight:300;
 }
-.step.active .step-desc{max-height:100px;margin-top:10px}
+.step.active .step-desc{max-height:150px;margin-top:10px}
 .step-tog{
-  width:34px;height:34px;border-radius:50%;
+  width:36px;height:36px;
   border:1.5px solid var(--border);
   display:flex;align-items:center;justify-content:center;
-  font-size:18px;color:var(--muted);margin-top:4px;
+  font-size:20px;color:var(--muted2);margin-top:6px;
   transition:background .2s,border-color .2s,transform .3s,color .2s;
   flex-shrink:0;
 }
 .step.active .step-tog{
-  background:var(--lime);border-color:var(--lime);
-  color:var(--ink);transform:rotate(45deg);
+  background:var(--accent);border-color:var(--accent);
+  color:var(--white);transform:rotate(45deg);
 }
 
 /* SERVICES */
 .services-section{
-  background:var(--page2);padding:100px 48px;
-  border-top:1px solid var(--border);
+  background:var(--warm-gray);
+  padding:120px 56px;
+  border-bottom:1px solid var(--border);
 }
 .services-grid{
   display:grid;grid-template-columns:repeat(3,1fr);
-  gap:2px;margin-top:56px;
+  gap:20px;margin-top:64px;
 }
 .svc-card{
-  background:var(--white);padding:44px 36px;
+  background:var(--white);
+  padding:44px 36px;
   display:flex;flex-direction:column;
   border:1px solid var(--border);
   position:relative;overflow:hidden;
-  transition:transform .25s cubic-bezier(.23,1,.32,1);
+  transition:transform .25s cubic-bezier(.23,1,.32,1),box-shadow .25s,border-color .25s;
 }
-.svc-card::after{
-  content:'';position:absolute;bottom:0;left:0;right:0;
-  height:3px;background:var(--lime);
-  transform:scaleX(0);transform-origin:left;
-  transition:transform .3s cubic-bezier(.23,1,.32,1);
+.svc-card:hover{
+  transform:translateY(-6px);
+  box-shadow:0 20px 60px rgba(26,22,18,0.1);
+  border-color:var(--accent);
 }
-.svc-card:hover{transform:translateY(-4px)}
-.svc-card:hover::after{transform:scaleX(1)}
+.svc-icon{
+  font-size:28px;margin-bottom:24px;
+  width:52px;height:52px;
+  background:var(--accent-pale);
+  display:flex;align-items:center;justify-content:center;
+}
 .svc-num{
-  font-size:11px;color:var(--muted2);font-weight:700;
-  letter-spacing:0.1em;margin-bottom:24px;
+  font-size:10px;color:var(--muted2);font-weight:600;
+  letter-spacing:0.16em;margin-bottom:12px;text-transform:uppercase;
 }
 .svc-title{
-  font-family:'Instrument Serif',serif;
-  font-size:24px;line-height:1.2;letter-spacing:-0.5px;
-  color:var(--ink);margin-bottom:6px;
+  font-family:'Playfair Display',serif;
+  font-size:22px;line-height:1.2;
+  color:var(--ink);margin-bottom:8px;font-weight:700;
 }
 .svc-tag{
-  font-size:11px;color:var(--muted2);letter-spacing:0.1em;
-  text-transform:uppercase;margin-bottom:28px;font-weight:600;
+  font-size:11px;color:var(--accent);letter-spacing:0.1em;
+  text-transform:uppercase;margin-bottom:24px;font-weight:600;
 }
-.svc-list{list-style:none;flex:1;margin-bottom:36px}
+.svc-list{list-style:none;flex:1;margin-bottom:32px}
 .svc-list li{
   font-size:14px;color:var(--muted);
-  padding:8px 0;border-bottom:1px solid var(--border);
-  display:flex;align-items:center;gap:10px;line-height:1.4;
+  padding:9px 0;border-bottom:1px solid var(--border);
+  display:flex;align-items:flex-start;gap:10px;line-height:1.5;
+  font-weight:300;
 }
 .svc-list li::before{
-  content:'';width:5px;height:5px;border-radius:50%;
-  background:var(--lime);border:1px solid var(--lime-dk);flex-shrink:0;
+  content:'→';color:var(--accent);flex-shrink:0;
+  font-size:12px;margin-top:2px;
 }
 .svc-btn{
   display:inline-flex;align-items:center;gap:8px;
-  font-size:12px;font-weight:700;letter-spacing:0.08em;
-  text-transform:uppercase;color:var(--ink);
+  font-size:12px;font-weight:600;letter-spacing:0.1em;
+  text-transform:uppercase;color:var(--accent);
   text-decoration:none;
-  padding:12px 0;border-top:2px solid var(--ink);
-  transition:color .2s,border-color .2s;
+  padding:14px 0;border-top:2px solid var(--accent-pale);
+  transition:color .2s,border-color .2s,gap .2s;
 }
-.svc-btn:hover{color:var(--lime-dk);border-color:var(--lime-dk)}
-.svc-btn .arr{font-size:16px;transition:transform .2s}
-.svc-btn:hover .arr{transform:translateX(4px)}
+.svc-btn:hover{border-color:var(--accent);gap:14px}
+.svc-btn .arr{font-size:16px}
 
 /* CLIENTS */
 .clients-section{
-  padding:100px 48px;background:var(--white);
-  border-top:1px solid var(--border);
+  padding:120px 56px;background:var(--off-white);
   border-bottom:1px solid var(--border);
 }
 .clients-row{
   display:flex;flex-wrap:wrap;
-  border:1px solid var(--border);margin-top:56px;
+  border:1px solid var(--border);margin-top:64px;
+  background:var(--white);
 }
 .client-tile{
   flex:1;min-width:160px;
   display:flex;flex-direction:column;
-  align-items:center;padding:44px 20px;
+  align-items:center;padding:48px 20px;
   text-decoration:none;
   border-right:1px solid var(--border);
   position:relative;overflow:hidden;
+  transition:background .3s;
 }
 .client-tile:last-child{border-right:none}
-.client-tile::before{
-  content:'';position:absolute;inset:0;
-  background:var(--lime);
-  transform:translateY(100%);
-  transition:transform .35s cubic-bezier(.23,1,.32,1);
+.client-tile::after{
+  content:'';position:absolute;bottom:0;left:0;right:0;
+  height:2px;background:var(--accent);
+  transform:scaleX(0);transition:transform .3s cubic-bezier(.23,1,.32,1);
 }
-.client-tile:hover::before{transform:translateY(0)}
-.client-tile:hover .client-name{color:var(--ink)}
-.client-tile:hover .client-handle,
-.client-tile:hover .client-ig{color:rgba(13,13,11,0.6)}
+.client-tile:hover::after{transform:scaleX(1)}
+.client-tile:hover{background:var(--accent-pale)}
+.client-tile:hover .client-name{color:var(--accent)}
 .client-tile:hover .client-ig{opacity:1;transform:translateY(0)}
-.client-av{position:relative;z-index:1;width:68px;height:68px;margin-bottom:14px}
+.client-av{position:relative;z-index:1;width:70px;height:70px;margin-bottom:14px}
 .client-img{
-  width:68px;height:68px;border-radius:50%;
+  width:70px;height:70px;border-radius:50%;
   object-fit:cover;display:block;
   border:2px solid var(--border);
   transition:border-color .2s;
 }
-.client-tile:hover .client-img{border-color:rgba(13,13,11,0.3)}
+.client-tile:hover .client-img{border-color:var(--accent)}
 .client-init{
-  width:68px;height:68px;border-radius:50%;
+  width:70px;height:70px;border-radius:50%;
   border:2px solid var(--border);
-  background:var(--page2);
+  background:var(--warm-gray);
   align-items:center;justify-content:center;
-  font-family:'Instrument Serif',serif;
+  font-family:'Playfair Display',serif;
   font-size:20px;color:var(--muted);
   display:none;
 }
 .client-name{
-  font-size:14px;font-weight:700;color:var(--ink);
-  text-align:center;margin-bottom:3px;
+  font-size:14px;font-weight:600;color:var(--ink);
+  text-align:center;margin-bottom:4px;
   position:relative;z-index:1;transition:color .2s;
 }
 .client-handle{
   font-size:11px;color:var(--muted2);text-align:center;
-  position:relative;z-index:1;transition:color .2s;
+  position:relative;z-index:1;
 }
 .client-ig{
   margin-top:10px;position:relative;z-index:1;
-  font-size:10px;font-weight:700;letter-spacing:0.1em;
-  text-transform:uppercase;color:rgba(13,13,11,0.4);
+  font-size:10px;font-weight:600;letter-spacing:0.1em;
+  text-transform:uppercase;color:var(--accent);
   opacity:0;transform:translateY(6px);
   transition:opacity .2s,transform .2s;
 }
 
 /* VIDEOS */
-.videos-section{padding:100px 48px;background:var(--page)}
-
-/* TESTIMONIAL BADGE */
-.testimonial-badge{
-  display:inline-flex;align-items:center;gap:8px;
-  background:var(--ink);color:var(--page);
-  font-size:10px;font-weight:700;letter-spacing:0.14em;
-  text-transform:uppercase;padding:6px 14px;
-  border-radius:100px;align-self:flex-start;
+.videos-section{
+  padding:120px 56px;background:var(--warm-gray);
+  border-bottom:1px solid var(--border);
 }
-.tbadge-dot{
-  width:6px;height:6px;border-radius:50%;
-  background:var(--lime);flex-shrink:0;
-  animation:blink 1.4s ease-in-out infinite;
-}
-
-
-.drive-click-play{
-  position:absolute;inset:0;
-  background:var(--ink);
-  display:flex;align-items:center;justify-content:center;
-  cursor:pointer;z-index:2;
-  transition:background .2s;
-}
-.drive-click-play:hover{background:#1a1a18}
-.dcp-inner{
-  display:flex;flex-direction:column;
-  align-items:center;gap:10px;
-  text-align:center;
-}
-.dcp-icon{
-  width:56px;height:56px;border-radius:50%;
-  background:var(--lime);
-  display:flex;align-items:center;justify-content:center;
-  font-size:20px;color:var(--ink);
-  transition:transform .2s;
-}
-.drive-click-play:hover .dcp-icon{transform:scale(1.1)}
-.dcp-label{
-  font-family:'Familjen Grotesk',sans-serif;
-  font-size:14px;font-weight:700;color:var(--page);
-  letter-spacing:0.06em;text-transform:uppercase;
-}
-.dcp-sub{
-  font-size:12px;color:var(--muted2);
-}
-
-/* INSTAGRAM REELS GRID */
 .videos-grid{
   display:grid;grid-template-columns:repeat(3,1fr);
-  gap:20px;margin-top:56px;
+  gap:24px;margin-top:64px;
   align-items:start;
 }
-.ig-reel-wrap{
-  display:flex;flex-direction:column;gap:10px;
-}
+.ig-reel-wrap{display:flex;flex-direction:column;gap:10px}
 .ig-reel-wrap .instagram-media{
-  border-radius:12px !important;
+  border-radius:0 !important;
   width:100% !important;
   min-width:0 !important;
 }
 .ig-credit{
-  font-size:12px;color:var(--muted2);
-  text-align:center;letter-spacing:0.03em;
+  font-size:11px;color:var(--muted2);
+  text-align:center;letter-spacing:0.08em;text-transform:uppercase;
+}
+
+/* TRUST STRIP */
+.trust-strip{
+  background:var(--accent);
+  padding:56px;
+  display:grid;
+  grid-template-columns:1fr 2fr;
+  gap:64px;align-items:center;
+}
+.ts-left{}
+.ts-title{
+  font-family:'Playfair Display',serif;
+  font-size:clamp(28px,3vw,42px);
+  line-height:1.1;color:var(--white);
+  font-weight:700;
+}
+.ts-title em{font-style:italic;font-weight:400}
+.ts-right{
+  display:grid;grid-template-columns:1fr 1fr;gap:20px;
+}
+.ts-item{
+  background:rgba(255,255,255,0.1);
+  padding:20px 24px;
+  border:1px solid rgba(255,255,255,0.15);
+}
+.ts-item-title{
+  font-size:13px;font-weight:700;color:var(--white);
+  margin-bottom:6px;
+}
+.ts-item-desc{
+  font-size:12px;color:rgba(255,255,255,0.65);
+  line-height:1.6;font-weight:300;
 }
 
 /* FAQ */
 .faq-section{
-  padding:100px 48px;background:var(--ink);
+  padding:120px 56px;background:var(--off-white);
+  border-bottom:1px solid var(--border);
 }
-.faq-section .label-sm{color:var(--muted2)}
-.faq-section .title-serif{color:var(--page)}
-.faq-list{margin-top:56px}
-.faq-item{border-top:1px solid rgba(255,255,255,0.07)}
-.faq-item:last-child{border-bottom:1px solid rgba(255,255,255,0.07)}
+.faq-section .section-label{color:var(--accent)}
+.faq-grid{
+  display:grid;grid-template-columns:1fr 1fr;
+  gap:64px;margin-top:64px;align-items:start;
+}
+.faq-list{}
+.faq-item{border-top:1px solid var(--border)}
+.faq-item:last-child{border-bottom:1px solid var(--border)}
 .faq-q{
   width:100%;text-align:left;background:transparent;border:none;cursor:pointer;
-  padding:26px 0;
+  padding:24px 0;
   display:flex;justify-content:space-between;align-items:center;gap:20px;
-  font-family:'Familjen Grotesk',sans-serif;
-  font-size:16px;font-weight:600;color:rgba(245,242,234,0.75);
+  font-family:'Outfit',sans-serif;
+  font-size:15px;font-weight:600;color:var(--muted);
   transition:color .2s;
 }
-.faq-q:hover{color:var(--page)}
+.faq-q:hover{color:var(--ink)}
 .faq-icon{
   width:30px;height:30px;flex-shrink:0;
-  border:1px solid rgba(255,255,255,0.12);border-radius:50%;
+  border:1.5px solid var(--border);
   display:flex;align-items:center;justify-content:center;
-  color:rgba(245,242,234,0.4);font-size:18px;
+  color:var(--muted2);font-size:18px;
   transition:transform .3s,background .2s,border-color .2s,color .2s;
 }
 .faq-item.open .faq-icon{
   transform:rotate(45deg);
-  background:var(--lime);border-color:var(--lime);color:var(--ink);
+  background:var(--accent);border-color:var(--accent);color:var(--white);
 }
+.faq-item.open .faq-q{color:var(--ink)}
 .faq-a{
   max-height:0;overflow:hidden;
-  font-size:15px;color:var(--muted2);line-height:1.8;
+  font-size:14px;color:var(--muted);line-height:1.85;
   transition:max-height .4s cubic-bezier(.23,1,.32,1),padding .3s;
+  font-weight:300;
 }
-.faq-item.open .faq-a{max-height:180px;padding-bottom:26px}
+.faq-item.open .faq-a{max-height:180px;padding-bottom:24px}
+
+/* FAQ RIGHT CARD */
+.faq-cta-card{
+  background:var(--ink);
+  padding:48px 44px;
+  position:sticky;top:110px;
+}
+.fcc-label{
+  font-size:10px;font-weight:600;letter-spacing:0.18em;text-transform:uppercase;
+  color:var(--accent);margin-bottom:20px;display:block;
+}
+.fcc-title{
+  font-family:'Playfair Display',serif;
+  font-size:28px;line-height:1.2;
+  color:var(--off-white);font-weight:700;margin-bottom:16px;
+}
+.fcc-title em{font-style:italic;color:rgba(253,250,245,0.5);font-weight:400}
+.fcc-desc{
+  font-size:14px;color:rgba(253,250,245,0.4);
+  line-height:1.8;font-weight:300;margin-bottom:32px;
+}
+.fcc-cta{
+  display:flex;align-items:center;gap:10px;
+  background:var(--accent);color:var(--white);
+  font-size:12px;font-weight:600;letter-spacing:0.12em;
+  text-transform:uppercase;padding:16px 28px;
+  text-decoration:none;
+  transition:background .2s;
+}
+.fcc-cta:hover{background:var(--accent-lt)}
+.fcc-cta .arr{transition:transform .2s}
+.fcc-cta:hover .arr{transform:translateX(4px)}
+.fcc-note{
+  margin-top:20px;font-size:11px;color:rgba(253,250,245,0.2);
+  text-align:center;letter-spacing:0.06em;
+}
 
 /* CTA FINALE */
 .cta-finale{
-  padding:120px 48px;
-  background:var(--lime);
+  padding:140px 56px;
+  background:var(--warm-gray);
   text-align:center;position:relative;overflow:hidden;
+  border-top:1px solid var(--border);
 }
 .cta-finale::before{
-  content:'ASCEND';position:absolute;
-  font-family:'Instrument Serif',serif;
-  font-size:clamp(100px,18vw,260px);
-  color:rgba(0,0,0,0.05);
+  content:'PARTNER';position:absolute;
+  font-family:'Playfair Display',serif;
+  font-size:clamp(80px,16vw,240px);
+  color:rgba(212,88,26,0.05);
   top:50%;left:50%;transform:translate(-50%,-50%);
-  white-space:nowrap;pointer-events:none;letter-spacing:-6px;line-height:1;
+  white-space:nowrap;pointer-events:none;letter-spacing:-4px;
+  font-weight:700;
 }
 .cta-finale h2{
-  font-family:'Instrument Serif',serif;
-  font-size:clamp(40px,7vw,86px);
-  line-height:1;letter-spacing:-2px;
-  color:var(--ink);margin-bottom:20px;position:relative;
+  font-family:'Playfair Display',serif;
+  font-size:clamp(38px,6vw,80px);
+  line-height:1;letter-spacing:-0.5px;
+  color:var(--ink);margin-bottom:24px;
+  font-weight:700;position:relative;
 }
-.cta-finale h2 em{font-style:italic}
+.cta-finale h2 em{font-style:italic;color:var(--accent);font-weight:400}
 .cta-finale p{
-  font-size:17px;color:rgba(13,13,11,0.6);
-  max-width:400px;margin:0 auto 48px;
-  line-height:1.7;position:relative;
+  font-size:17px;color:var(--muted);
+  max-width:480px;margin:0 auto 52px;
+  line-height:1.8;font-weight:300;position:relative;
 }
-.cta-finale .btn-big{
-  background:var(--ink);color:var(--page);
-  font-size:15px;padding:20px 40px;position:relative;
+.cta-btn-group{
+  display:flex;align-items:center;justify-content:center;
+  gap:16px;flex-wrap:wrap;position:relative;
 }
-.cta-finale .btn-big:hover{background:var(--white);color:var(--ink)}
 
 /* FOOTER */
 footer{
-  background:var(--ink);padding:28px 48px;
+  background:var(--ink);padding:32px 56px;
   display:flex;justify-content:space-between;align-items:center;
   border-top:1px solid rgba(255,255,255,0.05);
   flex-wrap:wrap;gap:16px;
 }
 .footer-logo{
-  font-family:'Instrument Serif',serif;
-  font-size:16px;color:rgba(245,242,234,0.35);text-decoration:none;
+  font-family:'Playfair Display',serif;
+  font-size:16px;color:rgba(253,250,245,0.3);text-decoration:none;
 }
-.footer-links{display:flex;gap:24px;flex-wrap:wrap}
+.footer-links{display:flex;gap:28px;flex-wrap:wrap}
 .footer-links a{
-  font-size:11px;color:rgba(245,242,234,0.25);
-  text-decoration:none;letter-spacing:0.08em;text-transform:uppercase;
+  font-size:11px;color:rgba(253,250,245,0.2);
+  text-decoration:none;letter-spacing:0.1em;text-transform:uppercase;
   transition:color .2s;
 }
-.footer-links a:hover{color:var(--page)}
-.footer-copy{font-size:11px;color:rgba(245,242,234,0.18)}
+.footer-links a:hover{color:rgba(253,250,245,0.6)}
+.footer-copy{font-size:11px;color:rgba(253,250,245,0.14);letter-spacing:0.04em}
 
 /* REVEAL */
 .reveal{
-  opacity:0;transform:translateY(24px);
-  transition:opacity .7s cubic-bezier(.23,1,.32,1),transform .7s cubic-bezier(.23,1,.32,1);
+  opacity:0;transform:translateY(26px);
+  transition:opacity .75s cubic-bezier(.23,1,.32,1),transform .75s cubic-bezier(.23,1,.32,1);
 }
 .reveal.visible{opacity:1;transform:translateY(0)}
 
-@media(max-width:768px){
+@media(max-width:900px){
   html{cursor:auto}
   #cursor,#cursor-ring{display:none}
   nav{padding:16px 20px}
   .nav-links{display:none}
-  .hero{padding:100px 20px 40px;gap:32px;}
-  .tstack{grid-template-columns:1fr}
-  .process-section,.services-section,.clients-section,
-  .videos-section,.faq-section,.founder,.cta-finale{padding:80px 20px}
+  .hero,.philosophy,.founder{grid-template-columns:1fr}
+  .hero-left,.hero-right{padding:80px 20px 40px}
+  .hero-right{padding-top:0}
+  .partner-card{max-width:100%}
+  .growth-strip-inner{flex-direction:column}
+  .growth-block{border-right:none;border-bottom:1px solid rgba(255,255,255,0.06)}
+  .process-section,.services-section,.clients-section,.videos-section,.faq-section,.trust-strip,.cta-finale{padding:80px 20px}
   .stats-row{grid-template-columns:1fr}
   .stat-cell{border-right:none;border-bottom:1px solid var(--border)}
-  .step{grid-template-columns:50px 1fr 36px;gap:16px}
+  .step{grid-template-columns:52px 1fr 36px;gap:16px}
   .services-grid,.videos-grid{grid-template-columns:1fr}
   .clients-row{flex-direction:column}
   .client-tile{border-right:none;border-bottom:1px solid var(--border)}
   .section-head{flex-direction:column;align-items:flex-start}
   footer{flex-direction:column;align-items:flex-start}
+  .trust-strip{grid-template-columns:1fr}
+  .ts-right{grid-template-columns:1fr}
+  .faq-grid{grid-template-columns:1fr}
+  .founder{gap:40px;padding:80px 20px}
+  .philosophy{gap:40px;padding:80px 20px}
 }
 </style>
 </head>
@@ -622,151 +856,241 @@ footer{
 
 <!-- NAV -->
 <nav>
-  <a href="#" class="nav-logo">Brands<em>Ascend</em></a>
+  <div class="nav-brand">
+    <a href="#" class="nav-logo">Pratikshit</a>
+    <span class="nav-niche">Growth Partner · Coaches &amp; Creators</span>
+  </div>
   <ul class="nav-links">
+    <li><a href="#philosophy">Why Us</a></li>
     <li><a href="#services">Services</a></li>
-    <li><a href="#process">Process</a></li>
     <li><a href="#clients">Clients</a></li>
     <li><a href="#faq">FAQ</a></li>
   </ul>
-  <a href="https://ig.me/m/iampratikshit" class="nav-pill cta-hover" target="_blank">DM us →</a>
+  <a href="https://ig.me/m/iampratikshit" class="nav-cta cta-hover" target="_blank">Work together →</a>
 </nav>
 
-<!-- HERO -->
-<section class="hero">
-  <!-- TOP: copy -->
-  <div class="hero-left">
-    <div class="hero-eyebrow reveal">
-      <span class="hero-dot"></span>
-      Full-Stack Content Agency
+<!-- TESTIMONIALS AT TOP -->
+<section class="top-testimonials">
+  <div class="tt-header">
+    <div class="tt-badge">
+      <span class="tt-dot"></span>
+      Real coaches. Real results.
     </div>
-    <h1 class="reveal" style="transition-delay:.1s">
-      Your brand,<br>
-      <em>built to</em><br>
-      <span class="pill-word">dominate.</span>
-    </h1>
-    <p class="hero-desc reveal" style="transition-delay:.2s">
-      We turn founders, creators, and podcasters into recognized voices — through precision editing, content strategy, and distribution that actually converts.
-    </p>
-    <div class="hero-cta-block reveal" style="transition-delay:.25s">
-      <a href="https://ig.me/m/iampratikshit" class="btn-big cta-hover" target="_blank">
-        DM us on Instagram
-        <span class="arrow">→</span>
-      </a>
-      <button class="btn-sm-ghost" onclick="document.getElementById('founder-section').scrollIntoView({behavior:'smooth'})">Watch our story first</button>
-    </div>
+    <h2 class="tt-title">What coaches say<br><em>after working together.</em></h2>
   </div>
-
-  <!-- BOTTOM: three testimonials -->
-  <div class="hero-right reveal" style="transition-delay:.15s">
-    <div class="testimonial-badge">
-      <span class="tbadge-dot"></span>
-      Client Testimonials
+  <div class="tt-videos">
+    <div class="tt-video-item">
+      <div class="tt-frame">
+        <iframe
+          src="https://www.youtube.com/embed/DWEwluTAsR8?autoplay=1&mute=0&loop=1&playlist=DWEwluTAsR8&controls=1&rel=0&playsinline=1"
+          title="Testimonial — Erick Ronaldo"
+          allow="autoplay; fullscreen; picture-in-picture"
+          allowfullscreen>
+        </iframe>
+      </div>
+      <div class="tt-credit">
+        <img class="tt-avatar" src="https://i.ibb.co/YBv9ZhJF/image.png" alt="Erick Ronaldo"
+          onerror="this.style.display='none'">
+        <div class="tt-credit-text">
+          <strong>Erick Ronaldo</strong>
+          <span>@_erickronaldo_</span>
+        </div>
+      </div>
     </div>
-    <div class="tstack">
-
-      <!-- Erick — plays first / unmuted -->
-      <div class="tstack-item">
-        <div class="tstack-frame">
-          <iframe
-            src="https://www.youtube.com/embed/DWEwluTAsR8?autoplay=1&mute=0&loop=1&playlist=DWEwluTAsR8&controls=1&rel=0&playsinline=1"
-            title="Testimonial — Erick Ronaldo"
-            allow="autoplay; fullscreen; picture-in-picture"
-            allowfullscreen>
-          </iframe>
-        </div>
-        <div class="tstack-credit">
-          <img class="tcredit-img" src="https://i.ibb.co/YBv9ZhJF/image.png" alt="Erick">
-          <div class="tcredit-text"><strong>Erick Ronaldo</strong>@_erickronaldo_</div>
+    <div class="tt-video-item">
+      <div class="tt-frame">
+        <iframe
+          src="https://www.youtube.com/embed/LijwnStyfF8?autoplay=1&mute=0&loop=1&playlist=LijwnStyfF8&controls=1&rel=0&playsinline=1"
+          title="Testimonial — Confidence By Mike"
+          allow="autoplay; fullscreen; picture-in-picture"
+          allowfullscreen>
+        </iframe>
+      </div>
+      <div class="tt-credit">
+        <img class="tt-avatar" src="https://i.ibb.co/KxXgs4ry/image.png" alt="Mike"
+          onerror="this.style.display='none'">
+        <div class="tt-credit-text">
+          <strong>Confidence By Mike</strong>
+          <span>@confidencebymike</span>
         </div>
       </div>
-
-      <!-- Mike -->
-      <div class="tstack-item">
-        <div class="tstack-frame">
-          <iframe
-            src="https://www.youtube.com/embed/LijwnStyfF8?autoplay=1&mute=1&loop=1&playlist=LijwnStyfF8&controls=1&rel=0&playsinline=1"
-            title="Testimonial — Confidence By Mike"
-            allow="autoplay; fullscreen; picture-in-picture"
-            allowfullscreen>
-          </iframe>
-        </div>
-        <div class="tstack-credit">
-          <img class="tcredit-img" src="https://i.ibb.co/KxXgs4ry/image.png" alt="Mike">
-          <div class="tcredit-text"><strong>Confidence By Mike</strong>@confidencebymike</div>
+    </div>
+    <div class="tt-video-item">
+      <div class="tt-frame">
+        <iframe
+          src="https://www.youtube.com/embed/Nyw_tmp_23k?autoplay=1&mute=1&loop=1&playlist=Nyw_tmp_23k&controls=1&rel=0&playsinline=1"
+          title="Testimonial — Victor"
+          allow="autoplay; fullscreen; picture-in-picture"
+          allowfullscreen>
+        </iframe>
+      </div>
+      <div class="tt-credit">
+        <img class="tt-avatar" src="https://i.ibb.co/RGT05DzM/image.png" alt="Victor"
+          onerror="this.style.display='none'">
+        <div class="tt-credit-text">
+          <strong>Victor</strong>
+          <span>@victormlno</span>
         </div>
       </div>
-
-      <!-- Victor -->
-      <div class="tstack-item">
-        <div class="tstack-frame">
-          <iframe
-            src="https://www.youtube.com/embed/Nyw_tmp_23k?autoplay=1&mute=1&loop=1&playlist=Nyw_tmp_23k&controls=1&rel=0&playsinline=1"
-            title="Testimonial — Victor"
-            allow="autoplay; fullscreen; picture-in-picture"
-            allowfullscreen>
-          </iframe>
-        </div>
-        <div class="tstack-credit">
-          <img class="tcredit-img" src="https://i.ibb.co/RGT05DzM/image.png" alt="Victor">
-          <div class="tcredit-text"><strong>Victor</strong>@victormlno</div>
-        </div>
-      </div>
-
     </div>
   </div>
 </section>
 
-<!-- TICKER -->
-<div class="ticker-wrap">
-  <div class="ticker-track">
-    <span class="ticker-item"><span class="tk-star">★</span> Video Editing</span>
-    <span class="ticker-item"><span class="tk-star">★</span> Content Strategy</span>
-    <span class="ticker-item"><span class="tk-star">★</span> Smart Distribution</span>
-    <span class="ticker-item"><span class="tk-star">★</span> Paid Ads</span>
-    <span class="ticker-item"><span class="tk-star">★</span> 1B+ Views Generated</span>
-    <span class="ticker-item"><span class="tk-star">★</span> 2M+ Followers</span>
-    <span class="ticker-item"><span class="tk-star">★</span> 50+ Campaigns</span>
-    <span class="ticker-item"><span class="tk-star">★</span> Viral Concepts</span>
-    <span class="ticker-item"><span class="tk-star">★</span> CRO Optimization</span>
-    <span class="ticker-item"><span class="tk-star">★</span> Thumbnail Science</span>
-    <span class="ticker-item"><span class="tk-star">★</span> Video Editing</span>
-    <span class="ticker-item"><span class="tk-star">★</span> Content Strategy</span>
-    <span class="ticker-item"><span class="tk-star">★</span> Smart Distribution</span>
-    <span class="ticker-item"><span class="tk-star">★</span> Paid Ads</span>
-    <span class="ticker-item"><span class="tk-star">★</span> 1B+ Views Generated</span>
-    <span class="ticker-item"><span class="tk-star">★</span> 2M+ Followers</span>
-    <span class="ticker-item"><span class="tk-star">★</span> 50+ Campaigns</span>
-    <span class="ticker-item"><span class="tk-star">★</span> Viral Concepts</span>
-    <span class="ticker-item"><span class="tk-star">★</span> CRO Optimization</span>
-    <span class="ticker-item"><span class="tk-star">★</span> Thumbnail Science</span>
+<!-- HERO -->
+<section class="hero">
+  <div class="hero-left">
+    <div class="hero-tag reveal">
+      <span class="hero-tag-dot"></span>
+      <span class="hero-tag-text">For Coaches &amp; Creators</span>
+    </div>
+    <h1 class="reveal" style="transition-delay:.08s">
+      Not just<br>an editor.<br>
+      <em>A growth<br>partner.</em>
+    </h1>
+    <p class="hero-sub reveal" style="transition-delay:.14s">Your content. Your audience. Your revenue.</p>
+    <p class="hero-desc reveal" style="transition-delay:.2s">
+      Most editors deliver a file. I deliver results. Every clip is engineered to grow your audience, build your authority, and turn viewers into paying clients — because your growth is the only metric that matters.
+    </p>
+    <div class="hero-actions reveal" style="transition-delay:.28s">
+      <a href="https://ig.me/m/iampratikshit" class="btn-primary cta-hover" target="_blank">
+        Let's build together <span class="arr">→</span>
+      </a>
+      <button class="btn-ghost" onclick="document.getElementById('founder-section').scrollIntoView({behavior:'smooth'})">See the approach first</button>
+    </div>
+  </div>
+  <div class="hero-right reveal" style="transition-delay:.18s">
+    <div class="partner-card">
+      <div class="pc-label">What working together looks like</div>
+      <p class="pc-quote">"You focus on <span>coaching.</span> I handle everything that makes people find you."</p>
+      <div class="pc-divider"></div>
+      <div class="pc-promises">
+        <div class="pc-promise">
+          <div class="pc-check">✓</div>
+          <div class="pc-promise-text"><strong>Deep niche knowledge</strong> — built specifically for coaching content</div>
+        </div>
+        <div class="pc-promise">
+          <div class="pc-check">✓</div>
+          <div class="pc-promise-text"><strong>Growth-first editing</strong> — every cut is made to retain, convert, and attract clients</div>
+        </div>
+        <div class="pc-promise">
+          <div class="pc-check">✓</div>
+          <div class="pc-promise-text"><strong>Strategy included</strong> — not just execution, but a plan that compounds over time</div>
+        </div>
+        <div class="pc-promise">
+          <div class="pc-check">✓</div>
+          <div class="pc-promise-text"><strong>Invested in your outcomes</strong> — your wins are the benchmark, not deliverables</div>
+        </div>
+      </div>
+      <div class="pc-footer">
+        <div class="pc-footer-dot"></div>
+        <div class="pc-footer-text">Selective roster · limited spots open</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- GROWTH STRIP -->
+<div class="growth-strip">
+  <div class="growth-strip-inner">
+    <div class="growth-block">
+      <div class="growth-icon">🎯</div>
+      <div class="growth-block-text">
+        <div class="growth-block-title">Niche Specialist</div>
+        <div class="growth-block-sub">Coaching &amp; creator content</div>
+      </div>
+    </div>
+    <div class="growth-block">
+      <div class="growth-icon">📈</div>
+      <div class="growth-block-text">
+        <div class="growth-block-title">1B+ Views Generated</div>
+        <div class="growth-block-sub">Across clients &amp; creators</div>
+      </div>
+    </div>
+    <div class="growth-block">
+      <div class="growth-icon">🤝</div>
+      <div class="growth-block-text">
+        <div class="growth-block-title">True Partnership</div>
+        <div class="growth-block-sub">Strategy + execution, not just edits</div>
+      </div>
+    </div>
+    <div class="growth-block">
+      <div class="growth-icon">💬</div>
+      <div class="growth-block-text">
+        <div class="growth-block-title">Direct Access</div>
+        <div class="growth-block-sub">You talk to the person doing the work</div>
+      </div>
+    </div>
   </div>
 </div>
+
+<!-- PHILOSOPHY -->
+<section class="philosophy" id="philosophy">
+  <div class="philosophy-left">
+    <span class="section-label reveal">The difference</span>
+    <h2 class="section-title reveal" style="transition-delay:.1s">Editors deliver files.<br><em>Partners deliver growth.</em></h2>
+    <div class="philosophy-body reveal" style="transition-delay:.18s"></div>
+  </div>
+  <div class="philosophy-right">
+    <div class="diff-card reveal">
+      <div class="diff-num">01</div>
+      <div class="diff-body">
+        <div class="diff-title">Niche fluency, not generic editing</div>
+        <div class="diff-desc">Deep understanding of what makes your content hit — the triggers, the formats, the hooks that move viewers from scroll to DM.</div>
+      </div>
+    </div>
+    <div class="diff-card reveal" style="transition-delay:.08s">
+      <div class="diff-num">02</div>
+      <div class="diff-body">
+        <div class="diff-title">Strategy baked into every edit</div>
+        <div class="diff-desc">You're not just getting a shorter version of your video. You're getting a piece of content designed to funnel viewers towards your offer.</div>
+      </div>
+    </div>
+    <div class="diff-card reveal" style="transition-delay:.16s">
+      <div class="diff-num">03</div>
+      <div class="diff-body">
+        <div class="diff-title">Accountability to your revenue</div>
+        <div class="diff-desc">Vanity metrics don't pay your bills. The work is tracked against real outcomes — leads, DMs, conversions, and audience growth that compounds.</div>
+      </div>
+    </div>
+    <div class="diff-card reveal" style="transition-delay:.24s">
+      <div class="diff-num">04</div>
+      <div class="diff-body">
+        <div class="diff-title">You talk to who's doing the work</div>
+        <div class="diff-desc">No account managers, no miscommunication layers. Direct collaboration means your feedback lands exactly where it needs to, immediately.</div>
+      </div>
+    </div>
+  </div>
+</section>
 
 <!-- STATS -->
 <div class="stats-row">
   <div class="stat-cell reveal">
-    <span class="stat-num" data-target="1" data-suffix="B+">0</span>
-    <div class="stat-label">Total views generated across platforms</div>
+    <span class="stat-num"><span class="stat-accent" data-target="1" data-suffix="B+">0</span></span>
+    <div class="stat-label">Views generated across creators &amp; coaches</div>
   </div>
   <div class="stat-cell reveal" style="transition-delay:.1s">
-    <span class="stat-num" data-target="2" data-suffix="M+">0</span>
-    <div class="stat-label">Loyal followers gained for our clients</div>
+    <span class="stat-num"><span class="stat-accent" data-target="2" data-suffix="M+">0</span></span>
+    <div class="stat-label">Loyal followers built for clients</div>
   </div>
   <div class="stat-cell reveal" style="transition-delay:.2s">
-    <span class="stat-num" data-target="50" data-suffix="+">0</span>
-    <div class="stat-label">Successful campaigns launched and scaled</div>
+    <span class="stat-num"><span class="stat-accent" data-target="50" data-suffix="+">0</span></span>
+    <div class="stat-label">Campaigns launched, scaled &amp; monetized</div>
   </div>
 </div>
 
-<!-- FOUNDER VIDEO -->
+<!-- FOUNDER -->
 <div class="founder" id="founder-section">
-  <div class="founder-inner">
-    <div class="label-sm reveal">From the founder</div>
-    <h2 class="title-serif reveal" style="color:var(--page);margin-bottom:0;transition-delay:.1s">
+  <div class="founder-left">
+    <span class="founder-label reveal">Hear it directly</span>
+    <h2 class="founder-title reveal" style="transition-delay:.1s">
       Straight talk,<br><em>no fluff.</em>
     </h2>
-    <div class="video-wrap reveal" style="transition-delay:.2s">
+    <a href="https://ig.me/m/iampratikshit" class="btn-primary cta-hover reveal" target="_blank" style="transition-delay:.18s;align-self:flex-start">
+      Let's talk <span class="arr">→</span>
+    </a>
+  </div>
+  <div class="founder-right reveal" style="transition-delay:.12s">
+    <div class="video-wrap">
       <iframe
         id="founder-yt"
         data-src="https://www.youtube.com/embed/4dXE4CF4T-U?autoplay=1&mute=0&controls=1&rel=0&playsinline=1"
@@ -776,7 +1100,7 @@ footer{
         allowfullscreen>
       </iframe>
     </div>
-    <p class="video-note reveal" style="transition-delay:.3s">Hear exactly how we work — and why it gets results.</p>
+    <p class="video-note">Watch before reaching out — it'll make our first call 10× better.</p>
   </div>
 </div>
 
@@ -784,36 +1108,43 @@ footer{
 <section class="process-section" id="process">
   <div class="section-head">
     <div>
-      <div class="label-sm reveal">How it works</div>
-      <h2 class="title-serif reveal" style="transition-delay:.1s">Three steps.<br><em>One direction: up.</em></h2>
+      <span class="section-label reveal">How the partnership works</span>
+      <h2 class="section-title reveal" style="transition-delay:.1s">From raw footage<br><em>to inbound clients.</em></h2>
     </div>
-    <a href="https://ig.me/m/iampratikshit" class="btn-big cta-hover reveal" target="_blank" style="transition-delay:.2s">
-      DM us <span class="arrow">→</span>
+    <a href="https://ig.me/m/iampratikshit" class="btn-primary cta-hover reveal" target="_blank" style="transition-delay:.2s">
+      Start the conversation <span class="arr">→</span>
     </a>
   </div>
-
   <div class="process-steps">
     <div class="step reveal active" onclick="toggleStep(this)">
       <div class="step-num">01</div>
       <div>
-        <div class="step-title">Discovery Call</div>
-        <div class="step-desc">We dig into your content history, audience, and goals. Together we map out a high-impact video strategy and platform-specific plan — then we get moving.</div>
+        <div class="step-title">Deep-dive strategy session</div>
+        <div class="step-desc">Before any editing starts, we map your coaching methodology, ideal client, and content gaps. This isn't a generic onboarding — it's a real strategy built around what makes your audience engage and buy.</div>
       </div>
       <div class="step-tog">+</div>
     </div>
     <div class="step reveal" style="transition-delay:.1s" onclick="toggleStep(this)">
       <div class="step-num">02</div>
       <div>
-        <div class="step-title">Content Onboarding</div>
-        <div class="step-desc">Production process locked in. Professional editing begins. Titles, hooks, and thumbnails dialed for maximum click-through — nothing ships until it's ready to perform.</div>
+        <div class="step-title">Growth-engineered production</div>
+        <div class="step-desc">Your raw footage is transformed into precision short-form clips — hooks calibrated for your content, pacing that keeps viewers watching, and CTAs that drive DMs. Everything is built to convert, not just look good.</div>
       </div>
       <div class="step-tog">+</div>
     </div>
     <div class="step reveal" style="transition-delay:.2s" onclick="toggleStep(this)">
       <div class="step-num">03</div>
       <div>
-        <div class="step-title">Distribution & Scale</div>
-        <div class="step-desc">Smart syndication across TikTok, Reels, Shorts, and YouTube. Paid amplification where it counts. CRO refinement until your views compound into revenue.</div>
+        <div class="step-title">Distribution with intent</div>
+        <div class="step-desc">Cross-platform rollout across Reels, TikTok, Shorts, and YouTube — with paid amplification targeting your ideal audience. Tracked against leads and conversions, not just views.</div>
+      </div>
+      <div class="step-tog">+</div>
+    </div>
+    <div class="step reveal" style="transition-delay:.3s" onclick="toggleStep(this)">
+      <div class="step-num">04</div>
+      <div>
+        <div class="step-title">Monthly review &amp; compounding</div>
+        <div class="step-desc">Every month, we review what's working, double down on what converts, and cut what doesn't. Growth compounds when decisions are data-driven. This is what separates a growth partner from a one-and-done editor.</div>
       </div>
       <div class="step-tog">+</div>
     </div>
@@ -824,49 +1155,52 @@ footer{
 <section class="services-section" id="services">
   <div class="section-head">
     <div>
-      <div class="label-sm reveal">What we do</div>
-      <h2 class="title-serif reveal" style="transition-delay:.1s">Services that<br><em>move the needle.</em></h2>
+      <span class="section-label reveal">What's included</span>
+      <h2 class="section-title reveal" style="transition-delay:.1s">Everything you need.<br><em>Nothing you don't.</em></h2>
     </div>
   </div>
   <div class="services-grid">
     <div class="svc-card reveal">
+      <div class="svc-icon">✂️</div>
       <div class="svc-num">01 /</div>
-      <div class="svc-title">Video Editing<br>Specialist</div>
-      <div class="svc-tag">High-impact production</div>
+      <div class="svc-title">Coaching Content Editing</div>
+      <div class="svc-tag">Built for retention &amp; trust</div>
       <ul class="svc-list">
-        <li>Short-form content — Reels & TikTok</li>
-        <li>Long-form YouTube production</li>
-        <li>Motion graphics & B-roll integration</li>
-        <li>Sound design & color grading</li>
-        <li>24/7 editing support</li>
+        <li>Short-form clips from long coaching sessions</li>
+        <li>Hook-engineered Reels &amp; TikToks</li>
+        <li>Reaction video &amp; talking-head editing</li>
+        <li>Subtitles, pacing &amp; emotion-driven cuts</li>
+        <li>Fast 24–48hr turnaround</li>
       </ul>
-      <a href="https://ig.me/m/iampratikshit" class="svc-btn cta-hover" target="_blank">DM us <span class="arr">→</span></a>
+      <a href="https://ig.me/m/iampratikshit" class="svc-btn cta-hover" target="_blank">Let's talk <span class="arr">→</span></a>
     </div>
     <div class="svc-card reveal" style="transition-delay:.1s">
+      <div class="svc-icon">🧠</div>
       <div class="svc-num">02 /</div>
-      <div class="svc-title">Content Strategy<br>& Ideation</div>
+      <div class="svc-title">Niche Growth Strategy</div>
       <div class="svc-tag">Viral by design</div>
       <ul class="svc-list">
-        <li>Audience & competitor research</li>
-        <li>Viral concept generation</li>
-        <li>Hook, title & thumbnail optimization</li>
-        <li>Old content repurposing strategy</li>
-        <li>Monthly performance reporting</li>
+        <li>Creator &amp; coach niche research</li>
+        <li>Viral concept &amp; hook ideation</li>
+        <li>Thumbnail &amp; title optimization</li>
+        <li>Competitor analysis</li>
+        <li>Monthly performance review</li>
       </ul>
-      <a href="https://ig.me/m/iampratikshit" class="svc-btn cta-hover" target="_blank">DM us <span class="arr">→</span></a>
+      <a href="https://ig.me/m/iampratikshit" class="svc-btn cta-hover" target="_blank">Let's talk <span class="arr">→</span></a>
     </div>
     <div class="svc-card reveal" style="transition-delay:.2s">
+      <div class="svc-icon">🚀</div>
       <div class="svc-num">03 /</div>
-      <div class="svc-title">Smart Distribution<br>& Ads</div>
-      <div class="svc-tag">Reach that converts</div>
+      <div class="svc-title">Client Acquisition Distribution</div>
+      <div class="svc-tag">Reach that converts to clients</div>
       <ul class="svc-list">
-        <li>Multi-platform syndication</li>
-        <li>Paid promotion — Meta & Google Ads</li>
-        <li>Retargeting & conversion optimization</li>
-        <li>Landing page copywriting</li>
-        <li>24/7 live campaign monitoring</li>
+        <li>Multi-platform coaching content rollout</li>
+        <li>Paid ads targeting your ideal audience</li>
+        <li>Retargeting for high-ticket offers</li>
+        <li>Funnel &amp; landing page copywriting</li>
+        <li>Live campaign monitoring</li>
       </ul>
-      <a href="https://ig.me/m/iampratikshit" class="svc-btn cta-hover" target="_blank">DM us <span class="arr">→</span></a>
+      <a href="https://ig.me/m/iampratikshit" class="svc-btn cta-hover" target="_blank">Let's talk <span class="arr">→</span></a>
     </div>
   </div>
 </section>
@@ -875,12 +1209,11 @@ footer{
 <section class="clients-section" id="clients">
   <div class="section-head">
     <div>
-      <div class="label-sm reveal">Who we work with</div>
-      <h2 class="title-serif reveal" style="transition-delay:.1s">Creators who<br><em>trusted the process.</em></h2>
+      <span class="section-label reveal">Who I work with</span>
+      <h2 class="section-title reveal" style="transition-delay:.1s">Creators &amp; coaches<br><em>who chose a partner, not just a vendor.</em></h2>
     </div>
   </div>
   <div class="clients-row">
-
     <a href="https://www.instagram.com/victormlno/" class="client-tile cta-hover reveal" target="_blank" rel="noopener" style="transition-delay:.05s">
       <div class="client-av">
         <img class="client-img" src="https://i.ibb.co/RGT05DzM/image.png" alt="Victor"
@@ -891,7 +1224,6 @@ footer{
       <div class="client-handle">@victormlno</div>
       <div class="client-ig">View ↗</div>
     </a>
-
     <a href="https://www.instagram.com/confidencebymike/" class="client-tile cta-hover reveal" target="_blank" rel="noopener" style="transition-delay:.1s">
       <div class="client-av">
         <img class="client-img" src="https://i.ibb.co/KxXgs4ry/image.png" alt="Mike"
@@ -902,7 +1234,6 @@ footer{
       <div class="client-handle">@confidencebymike</div>
       <div class="client-ig">View ↗</div>
     </a>
-
     <a href="https://www.instagram.com/_erickronaldo_/" class="client-tile cta-hover reveal" target="_blank" rel="noopener" style="transition-delay:.15s">
       <div class="client-av">
         <img class="client-img" src="https://i.ibb.co/YBv9ZhJF/image.png" alt="Erick Ronaldo"
@@ -913,7 +1244,6 @@ footer{
       <div class="client-handle">@_erickronaldo_</div>
       <div class="client-ig">View ↗</div>
     </a>
-
     <a href="https://www.instagram.com/tedzhar/" class="client-tile cta-hover reveal" target="_blank" rel="noopener" style="transition-delay:.2s">
       <div class="client-av">
         <img class="client-img" src="https://i.ibb.co/dsS0XFzK/image.png" alt="Tedzhar"
@@ -924,7 +1254,6 @@ footer{
       <div class="client-handle">@tedzhar</div>
       <div class="client-ig">View ↗</div>
     </a>
-
     <a href="https://www.instagram.com/eugenelitman_/" class="client-tile cta-hover reveal" target="_blank" rel="noopener" style="transition-delay:.25s">
       <div class="client-av">
         <img class="client-img" src="https://i.ibb.co/gZjbHCz3/image.png" alt="Eugene Litman"
@@ -936,6 +1265,36 @@ footer{
       <div class="client-ig">View ↗</div>
     </a>
 
+    <a href="https://www.instagram.com/genegerrienne/" class="client-tile cta-hover reveal" target="_blank" rel="noopener" style="transition-delay:.3s">
+      <div class="client-av">
+        <img class="client-img" src="https://i.ibb.co/BVzGD8my/image.png" alt="Gene Gerrienne"
+          onerror="this.style.display='none';this.nextElementSibling.style.display='flex'">
+        <div class="client-init">GG</div>
+      </div>
+      <div class="client-name">Gene Gerrienne</div>
+      <div class="client-handle">@genegerrienne</div>
+      <div class="client-ig">View ↗</div>
+    </a>
+    <a href="https://www.instagram.com/timothydating/" class="client-tile cta-hover reveal" target="_blank" rel="noopener" style="transition-delay:.35s">
+      <div class="client-av">
+        <img class="client-img" src="https://i.ibb.co/G4HbrSgH/image.png" alt="Timothy Dating"
+          onerror="this.style.display='none';this.nextElementSibling.style.display='flex'">
+        <div class="client-init">TD</div>
+      </div>
+      <div class="client-name">Timothy Dating</div>
+      <div class="client-handle">@timothydating</div>
+      <div class="client-ig">View ↗</div>
+    </a>
+    <a href="https://www.instagram.com/mattconway_pif/" class="client-tile cta-hover reveal" target="_blank" rel="noopener" style="transition-delay:.4s">
+      <div class="client-av">
+        <img class="client-img" src="https://i.ibb.co/0j4zXxLL/image.png" alt="Matt Conway"
+          onerror="this.style.display='none';this.nextElementSibling.style.display='flex'">
+        <div class="client-init">MC</div>
+      </div>
+      <div class="client-name">Matt Conway</div>
+      <div class="client-handle">@mattconway_pif</div>
+      <div class="client-ig">View ↗</div>
+    </a>
   </div>
 </section>
 
@@ -943,55 +1302,30 @@ footer{
 <section class="videos-section">
   <div class="section-head">
     <div>
-      <div class="label-sm reveal">Our work</div>
-      <h2 class="title-serif reveal" style="transition-delay:.1s">Content we've<br><em>created.</em></h2>
+      <span class="section-label reveal">The work</span>
+      <h2 class="section-title reveal" style="transition-delay:.1s">Content that<br><em>actually performs.</em></h2>
     </div>
   </div>
   <div class="videos-grid">
-    <!-- Replace each video-slot div with a video-embed-container+iframe when ready -->
-    <!-- Google Drive embed: https://drive.google.com/file/d/YOUR_FILE_ID/preview -->
     <div class="ig-reel-wrap">
-      <blockquote class="instagram-media" data-instgrm-captioned data-instgrm-permalink="https://www.instagram.com/reel/DMIpwgCNsja/?utm_source=ig_embed&amp;utm_campaign=loading" data-instgrm-version="14" style="background:#FFF;border:0;border-radius:12px;box-shadow:0 0 1px 0 rgba(0,0,0,0.3),0 4px 20px 0 rgba(0,0,0,0.08);margin:0;max-width:100%;min-width:0;padding:0;width:100%;">
-        <div style="padding:16px;">
-          <a href="https://www.instagram.com/reel/DMIpwgCNsja/?utm_source=ig_embed&utm_campaign=loading" style="background:#FFFFFF;line-height:0;padding:0;text-align:center;text-decoration:none;width:100%;" target="_blank">
-            <div style="display:flex;flex-direction:row;align-items:center;"><div style="background-color:#F4F4F4;border-radius:50%;flex-grow:0;height:40px;margin-right:14px;width:40px;"></div><div style="display:flex;flex-direction:column;flex-grow:1;justify-content:center;"><div style="background-color:#F4F4F4;border-radius:4px;flex-grow:0;height:14px;margin-bottom:6px;width:100px;"></div><div style="background-color:#F4F4F4;border-radius:4px;flex-grow:0;height:14px;width:60px;"></div></div></div>
-            <div style="padding:19% 0;"></div>
-            <div style="display:block;height:50px;margin:0 auto 12px;width:50px;"><svg width="50px" height="50px" viewBox="0 0 60 60" xmlns="http://www.w3.org/2000/svg"><g fill="none" fill-rule="evenodd"><g fill="#000000"><path d="M556.869,30.41 C554.814,30.41 553.148,32.076 553.148,34.131 C553.148,36.186 554.814,37.852 556.869,37.852 C558.924,37.852 560.59,36.186 560.59,34.131 C560.59,32.076 558.924,30.41 556.869,30.41 M541,60.657 C535.114,60.657 530.342,55.887 530.342,50 C530.342,44.114 535.114,39.342 541,39.342 C546.887,39.342 551.658,44.114 551.658,50 C551.658,55.887 546.887,60.657 541,60.657 M541,33.886 C532.1,33.886 524.886,41.1 524.886,50 C524.886,58.899 532.1,66.113 541,66.113 C549.9,66.113 557.115,58.899 557.115,50 C557.115,41.1 549.9,33.886 541,33.886 M565.378,62.101 C565.244,65.022 564.756,66.606 564.346,67.663 C563.803,69.06 563.154,70.057 562.106,71.106 C561.058,72.155 560.06,72.803 558.662,73.347 C557.607,73.757 556.021,74.244 553.102,74.378 C549.944,74.521 548.997,74.552 541,74.552 C533.003,74.552 532.056,74.521 528.898,74.378 C525.979,74.244 524.393,73.757 523.338,73.347 C521.94,72.803 520.942,72.155 519.894,71.106 C518.846,70.057 518.197,69.06 517.654,67.663 C517.244,66.606 516.755,65.022 516.623,62.101 C516.479,58.943 516.448,57.996 516.448,50 C516.448,42.003 516.479,41.056 516.623,37.899 C516.755,34.978 517.244,33.391 517.654,32.338 C518.197,30.938 518.846,29.942 519.894,28.894 C520.942,27.846 521.94,27.196 523.338,26.654 C524.393,26.244 525.979,25.756 528.898,25.623 C532.057,25.479 533.004,25.448 541,25.448 C548.997,25.448 549.943,25.479 553.102,25.623 C556.021,25.756 557.607,26.244 558.662,26.654 C560.06,27.196 561.058,27.846 562.106,28.894 C563.154,29.942 563.803,30.938 564.346,32.338 C564.756,33.391 565.244,34.978 565.378,37.899 C565.522,41.056 565.552,42.003 565.552,50 C565.552,57.996 565.522,58.943 565.378,62.101 M570.82,37.631 C570.674,34.438 570.167,32.258 569.425,30.349 C568.659,28.377 567.633,26.702 565.965,25.035 C564.297,23.368 562.623,22.342 560.652,21.575 C558.743,20.834 556.562,20.326 553.369,20.18 C550.169,20.033 549.148,20 541,20 C532.853,20 531.831,20.033 528.631,20.18 C525.438,20.326 523.257,20.834 521.349,21.575 C519.376,22.342 517.703,23.368 516.035,25.035 C514.368,26.702 513.342,28.377 512.574,30.349 C511.834,32.258 511.326,34.438 511.181,37.631 C511.035,40.831 511,41.851 511,50 C511,58.147 511.035,59.17 511.181,62.369 C511.326,65.562 511.834,67.743 512.574,69.651 C513.342,71.625 514.368,73.296 516.035,74.965 C517.703,76.634 519.376,77.658 521.349,78.425 C523.257,79.167 525.438,79.673 528.631,79.82 C531.831,79.965 532.853,80.001 541,80.001 C549.148,80.001 550.169,79.965 553.369,79.82 C556.562,79.673 558.743,79.167 560.652,78.425 C562.623,77.658 564.297,76.634 565.965,74.965 C567.633,73.296 568.659,71.625 569.425,69.651 C570.167,67.743 570.674,65.562 570.82,62.369 C570.966,59.17 571,58.147 571,50 C571,41.851 570.966,40.831 570.82,37.631"></path></g></g></svg></div>
-            <div style="padding-top:8px;"><div style="color:#3897f0;font-family:Arial,sans-serif;font-size:14px;font-weight:550;line-height:18px;">View this post on Instagram</div></div>
-            <div style="padding:12.5% 0;"></div>
-          </a>
+      <blockquote class="instagram-media" data-instgrm-captioned data-instgrm-permalink="https://www.instagram.com/reel/DMIpwgCNsja/?utm_source=ig_embed&amp;utm_campaign=loading" data-instgrm-version="14" style="background:#FFF;border:0;border-radius:0;box-shadow:0 0 1px 0 rgba(0,0,0,0.3),0 4px 20px 0 rgba(0,0,0,0.08);margin:0;max-width:100%;min-width:0;padding:0;width:100%;">
+        <div style="padding:16px;"><a href="https://www.instagram.com/reel/DMIpwgCNsja/?utm_source=ig_embed&utm_campaign=loading" style="background:#FFFFFF;line-height:0;padding:0;text-align:center;text-decoration:none;width:100%;" target="_blank"><div style="display:flex;flex-direction:row;align-items:center;"><div style="background-color:#F4F4F4;border-radius:50%;flex-grow:0;height:40px;margin-right:14px;width:40px;"></div><div style="display:flex;flex-direction:column;flex-grow:1;justify-content:center;"><div style="background-color:#F4F4F4;border-radius:4px;flex-grow:0;height:14px;margin-bottom:6px;width:100px;"></div><div style="background-color:#F4F4F4;border-radius:4px;flex-grow:0;height:14px;width:60px;"></div></div></div><div style="padding:19% 0;"></div><div style="display:block;height:50px;margin:0 auto 12px;width:50px;"><svg width="50px" height="50px" viewBox="0 0 60 60" xmlns="http://www.w3.org/2000/svg"><g fill="none" fill-rule="evenodd"><g fill="#000000"><path d="M556.869,30.41 C554.814,30.41 553.148,32.076 553.148,34.131 C553.148,36.186 554.814,37.852 556.869,37.852 C558.924,37.852 560.59,36.186 560.59,34.131 C560.59,32.076 558.924,30.41 556.869,30.41 M541,60.657 C535.114,60.657 530.342,55.887 530.342,50 C530.342,44.114 535.114,39.342 541,39.342 C546.887,39.342 551.658,44.114 551.658,50 C551.658,55.887 546.887,60.657 541,60.657 M541,33.886 C532.1,33.886 524.886,41.1 524.886,50 C524.886,58.899 532.1,66.113 541,66.113 C549.9,66.113 557.115,58.899 557.115,50 C557.115,41.1 549.9,33.886 541,33.886 M565.378,62.101 C565.244,65.022 564.756,66.606 564.346,67.663 C563.803,69.06 563.154,70.057 562.106,71.106 C561.058,72.155 560.06,72.803 558.662,73.347 C557.607,73.757 556.021,74.244 553.102,74.378 C549.944,74.521 548.997,74.552 541,74.552 C533.003,74.552 532.056,74.521 528.898,74.378 C525.979,74.244 524.393,73.757 523.338,73.347 C521.94,72.803 520.942,72.155 519.894,71.106 C518.846,70.057 518.197,69.06 517.654,67.663 C517.244,66.606 516.755,65.022 516.623,62.101 C516.479,58.943 516.448,57.996 516.448,50 C516.448,42.003 516.479,41.056 516.623,37.899 C516.755,34.978 517.244,33.391 517.654,32.338 C518.197,30.938 518.846,29.942 519.894,28.894 C520.942,27.846 521.94,27.196 523.338,26.654 C524.393,26.244 525.979,25.756 528.898,25.623 C532.057,25.479 533.004,25.448 541,25.448 C548.997,25.448 549.943,25.479 553.102,25.623 C556.021,25.756 557.607,26.244 558.662,26.654 C560.06,27.196 561.058,27.846 562.106,28.894 C563.154,29.942 563.803,30.938 564.346,32.338 C564.756,33.391 565.244,34.978 565.378,37.899 C565.522,41.056 565.552,42.003 565.552,50 C565.552,57.996 565.522,58.943 565.378,62.101 M570.82,37.631 C570.674,34.438 570.167,32.258 569.425,30.349 C568.659,28.377 567.633,26.702 565.965,25.035 C564.297,23.368 562.623,22.342 560.652,21.575 C558.743,20.834 556.562,20.326 553.369,20.18 C550.169,20.033 549.148,20 541,20 C532.853,20 531.831,20.033 528.631,20.18 C525.438,20.326 523.257,20.834 521.349,21.575 C519.376,22.342 517.703,23.368 516.035,25.035 C514.368,26.702 513.342,28.377 512.574,30.349 C511.834,32.258 511.326,34.438 511.181,37.631 C511.035,40.831 511,41.851 511,50 C511,58.147 511.035,59.17 511.181,62.369 C511.326,65.562 511.834,67.743 512.574,69.651 C513.342,71.625 514.368,73.296 516.035,74.965 C517.703,76.634 519.376,77.658 521.349,78.425 C523.257,79.167 525.438,79.673 528.631,79.82 C531.831,79.965 532.853,80.001 541,80.001 C549.148,80.001 550.169,79.965 553.369,79.82 C556.562,79.673 558.743,79.167 560.652,78.425 C562.623,77.658 564.297,76.634 565.965,74.965 C567.633,73.296 568.659,71.625 569.425,69.651 C570.167,67.743 570.674,65.562 570.82,62.369 C570.966,59.17 571,58.147 571,50 C571,41.851 570.966,40.831 570.82,37.631"></path></g></g></svg></div><div style="padding-top:8px;"><div style="color:#3897f0;font-family:Arial,sans-serif;font-size:14px;font-weight:550;line-height:18px;">View this post on Instagram</div></div><div style="padding:12.5% 0;"></div></a>
           <p style="color:#c9c8cd;font-family:Arial,sans-serif;font-size:14px;line-height:17px;margin:8px 0 0;overflow:hidden;text-align:center;"><a href="https://www.instagram.com/reel/DMIpwgCNsja/?utm_source=ig_embed&utm_campaign=loading" style="color:#c9c8cd;font-family:Arial,sans-serif;font-size:14px;text-decoration:none;" target="_blank">A post shared by Eugene Litman (@eugenelitman_)</a></p>
         </div>
       </blockquote>
       <div class="ig-credit">Eugene Litman · @eugenelitman_</div>
     </div>
-
     <div class="ig-reel-wrap">
-      <blockquote class="instagram-media" data-instgrm-captioned data-instgrm-permalink="https://www.instagram.com/reel/DPR7Sf3DK9S/?utm_source=ig_embed&amp;utm_campaign=loading" data-instgrm-version="14" style="background:#FFF;border:0;border-radius:12px;box-shadow:0 0 1px 0 rgba(0,0,0,0.3),0 4px 20px 0 rgba(0,0,0,0.08);margin:0;max-width:100%;min-width:0;padding:0;width:100%;">
-        <div style="padding:16px;">
-          <a href="https://www.instagram.com/reel/DPR7Sf3DK9S/?utm_source=ig_embed&utm_campaign=loading" style="background:#FFFFFF;line-height:0;padding:0;text-align:center;text-decoration:none;width:100%;" target="_blank">
-            <div style="display:flex;flex-direction:row;align-items:center;"><div style="background-color:#F4F4F4;border-radius:50%;flex-grow:0;height:40px;margin-right:14px;width:40px;"></div><div style="display:flex;flex-direction:column;flex-grow:1;justify-content:center;"><div style="background-color:#F4F4F4;border-radius:4px;flex-grow:0;height:14px;margin-bottom:6px;width:100px;"></div><div style="background-color:#F4F4F4;border-radius:4px;flex-grow:0;height:14px;width:60px;"></div></div></div>
-            <div style="padding:19% 0;"></div>
-            <div style="display:block;height:50px;margin:0 auto 12px;width:50px;"><svg width="50px" height="50px" viewBox="0 0 60 60" xmlns="http://www.w3.org/2000/svg"><g fill="none" fill-rule="evenodd"><g fill="#000000"><path d="M556.869,30.41 C554.814,30.41 553.148,32.076 553.148,34.131 C553.148,36.186 554.814,37.852 556.869,37.852 C558.924,37.852 560.59,36.186 560.59,34.131 C560.59,32.076 558.924,30.41 556.869,30.41 M541,60.657 C535.114,60.657 530.342,55.887 530.342,50 C530.342,44.114 535.114,39.342 541,39.342 C546.887,39.342 551.658,44.114 551.658,50 C551.658,55.887 546.887,60.657 541,60.657 M541,33.886 C532.1,33.886 524.886,41.1 524.886,50 C524.886,58.899 532.1,66.113 541,66.113 C549.9,66.113 557.115,58.899 557.115,50 C557.115,41.1 549.9,33.886 541,33.886 M565.378,62.101 C565.244,65.022 564.756,66.606 564.346,67.663 C563.803,69.06 563.154,70.057 562.106,71.106 C561.058,72.155 560.06,72.803 558.662,73.347 C557.607,73.757 556.021,74.244 553.102,74.378 C549.944,74.521 548.997,74.552 541,74.552 C533.003,74.552 532.056,74.521 528.898,74.378 C525.979,74.244 524.393,73.757 523.338,73.347 C521.94,72.803 520.942,72.155 519.894,71.106 C518.846,70.057 518.197,69.06 517.654,67.663 C517.244,66.606 516.755,65.022 516.623,62.101 C516.479,58.943 516.448,57.996 516.448,50 C516.448,42.003 516.479,41.056 516.623,37.899 C516.755,34.978 517.244,33.391 517.654,32.338 C518.197,30.938 518.846,29.942 519.894,28.894 C520.942,27.846 521.94,27.196 523.338,26.654 C524.393,26.244 525.979,25.756 528.898,25.623 C532.057,25.479 533.004,25.448 541,25.448 C548.997,25.448 549.943,25.479 553.102,25.623 C556.021,25.756 557.607,26.244 558.662,26.654 C560.06,27.196 561.058,27.846 562.106,28.894 C563.154,29.942 563.803,30.938 564.346,32.338 C564.756,33.391 565.244,34.978 565.378,37.899 C565.522,41.056 565.552,42.003 565.552,50 C565.552,57.996 565.522,58.943 565.378,62.101 M570.82,37.631 C570.674,34.438 570.167,32.258 569.425,30.349 C568.659,28.377 567.633,26.702 565.965,25.035 C564.297,23.368 562.623,22.342 560.652,21.575 C558.743,20.834 556.562,20.326 553.369,20.18 C550.169,20.033 549.148,20 541,20 C532.853,20 531.831,20.033 528.631,20.18 C525.438,20.326 523.257,20.834 521.349,21.575 C519.376,22.342 517.703,23.368 516.035,25.035 C514.368,26.702 513.342,28.377 512.574,30.349 C511.834,32.258 511.326,34.438 511.181,37.631 C511.035,40.831 511,41.851 511,50 C511,58.147 511.035,59.17 511.181,62.369 C511.326,65.562 511.834,67.743 512.574,69.651 C513.342,71.625 514.368,73.296 516.035,74.965 C517.703,76.634 519.376,77.658 521.349,78.425 C523.257,79.167 525.438,79.673 528.631,79.82 C531.831,79.965 532.853,80.001 541,80.001 C549.148,80.001 550.169,79.965 553.369,79.82 C556.562,79.673 558.743,79.167 560.652,78.425 C562.623,77.658 564.297,76.634 565.965,74.965 C567.633,73.296 568.659,71.625 569.425,69.651 C570.167,67.743 570.674,65.562 570.82,62.369 C570.966,59.17 571,58.147 571,50 C571,41.851 570.966,40.831 570.82,37.631"></path></g></g></svg></div>
-            <div style="padding-top:8px;"><div style="color:#3897f0;font-family:Arial,sans-serif;font-size:14px;font-weight:550;line-height:18px;">View this post on Instagram</div></div>
-            <div style="padding:12.5% 0;"></div>
-          </a>
+      <blockquote class="instagram-media" data-instgrm-captioned data-instgrm-permalink="https://www.instagram.com/reel/DPR7Sf3DK9S/?utm_source=ig_embed&amp;utm_campaign=loading" data-instgrm-version="14" style="background:#FFF;border:0;border-radius:0;box-shadow:0 0 1px 0 rgba(0,0,0,0.3),0 4px 20px 0 rgba(0,0,0,0.08);margin:0;max-width:100%;min-width:0;padding:0;width:100%;">
+        <div style="padding:16px;"><a href="https://www.instagram.com/reel/DPR7Sf3DK9S/?utm_source=ig_embed&utm_campaign=loading" style="background:#FFFFFF;line-height:0;padding:0;text-align:center;text-decoration:none;width:100%;" target="_blank"><div style="display:flex;flex-direction:row;align-items:center;"><div style="background-color:#F4F4F4;border-radius:50%;flex-grow:0;height:40px;margin-right:14px;width:40px;"></div><div style="display:flex;flex-direction:column;flex-grow:1;justify-content:center;"><div style="background-color:#F4F4F4;border-radius:4px;flex-grow:0;height:14px;margin-bottom:6px;width:100px;"></div><div style="background-color:#F4F4F4;border-radius:4px;flex-grow:0;height:14px;width:60px;"></div></div></div><div style="padding:19% 0;"></div><div style="display:block;height:50px;margin:0 auto 12px;width:50px;"><svg width="50px" height="50px" viewBox="0 0 60 60" xmlns="http://www.w3.org/2000/svg"><g fill="none" fill-rule="evenodd"><g fill="#000000"><path d="M556.869,30.41 C554.814,30.41 553.148,32.076 553.148,34.131 C553.148,36.186 554.814,37.852 556.869,37.852 C558.924,37.852 560.59,36.186 560.59,34.131 C560.59,32.076 558.924,30.41 556.869,30.41 M541,60.657 C535.114,60.657 530.342,55.887 530.342,50 C530.342,44.114 535.114,39.342 541,39.342 C546.887,39.342 551.658,44.114 551.658,50 C551.658,55.887 546.887,60.657 541,60.657 M541,33.886 C532.1,33.886 524.886,41.1 524.886,50 C524.886,58.899 532.1,66.113 541,66.113 C549.9,66.113 557.115,58.899 557.115,50 C557.115,41.1 549.9,33.886 541,33.886 M565.378,62.101 C565.244,65.022 564.756,66.606 564.346,67.663 C563.803,69.06 563.154,70.057 562.106,71.106 C561.058,72.155 560.06,72.803 558.662,73.347 C557.607,73.757 556.021,74.244 553.102,74.378 C549.944,74.521 548.997,74.552 541,74.552 C533.003,74.552 532.056,74.521 528.898,74.378 C525.979,74.244 524.393,73.757 523.338,73.347 C521.94,72.803 520.942,72.155 519.894,71.106 C518.846,70.057 518.197,69.06 517.654,67.663 C517.244,66.606 516.755,65.022 516.623,62.101 C516.479,58.943 516.448,57.996 516.448,50 C516.448,42.003 516.479,41.056 516.623,37.899 C516.755,34.978 517.244,33.391 517.654,32.338 C518.197,30.938 518.846,29.942 519.894,28.894 C520.942,27.846 521.94,27.196 523.338,26.654 C524.393,26.244 525.979,25.756 528.898,25.623 C532.057,25.479 533.004,25.448 541,25.448 C548.997,25.448 549.943,25.479 553.102,25.623 C556.021,25.756 557.607,26.244 558.662,26.654 C560.06,27.196 561.058,27.846 562.106,28.894 C563.154,29.942 563.803,30.938 564.346,32.338 C564.756,33.391 565.244,34.978 565.378,37.899 C565.522,41.056 565.552,42.003 565.552,50 C565.552,57.996 565.522,58.943 565.378,62.101 M570.82,37.631 C570.674,34.438 570.167,32.258 569.425,30.349 C568.659,28.377 567.633,26.702 565.965,25.035 C564.297,23.368 562.623,22.342 560.652,21.575 C558.743,20.834 556.562,20.326 553.369,20.18 C550.169,20.033 549.148,20 541,20 C532.853,20 531.831,20.033 528.631,20.18 C525.438,20.326 523.257,20.834 521.349,21.575 C519.376,22.342 517.703,23.368 516.035,25.035 C514.368,26.702 513.342,28.377 512.574,30.349 C511.834,32.258 511.326,34.438 511.181,37.631 C511.035,40.831 511,41.851 511,50 C511,58.147 511.035,59.17 511.181,62.369 C511.326,65.562 511.834,67.743 512.574,69.651 C513.342,71.625 514.368,73.296 516.035,74.965 C517.703,76.634 519.376,77.658 521.349,78.425 C523.257,79.167 525.438,79.673 528.631,79.82 C531.831,79.965 532.853,80.001 541,80.001 C549.148,80.001 550.169,79.965 553.369,79.82 C556.562,79.673 558.743,79.167 560.652,78.425 C562.623,77.658 564.297,76.634 565.965,74.965 C567.633,73.296 568.659,71.625 569.425,69.651 C570.167,67.743 570.674,65.562 570.82,62.369 C570.966,59.17 571,58.147 571,50 C571,41.851 570.966,40.831 570.82,37.631"></path></g></g></svg></div><div style="padding-top:8px;"><div style="color:#3897f0;font-family:Arial,sans-serif;font-size:14px;font-weight:550;line-height:18px;">View this post on Instagram</div></div><div style="padding:12.5% 0;"></div></a>
           <p style="color:#c9c8cd;font-family:Arial,sans-serif;font-size:14px;line-height:17px;margin:8px 0 0;overflow:hidden;text-align:center;"><a href="https://www.instagram.com/reel/DPR7Sf3DK9S/?utm_source=ig_embed&utm_campaign=loading" style="color:#c9c8cd;font-family:Arial,sans-serif;font-size:14px;text-decoration:none;" target="_blank">A post shared by Erick Ronaldo (@_erickronaldo_)</a></p>
         </div>
       </blockquote>
       <div class="ig-credit">Erick Ronaldo · @_erickronaldo_</div>
     </div>
-
     <div class="ig-reel-wrap">
-      <blockquote class="instagram-media" data-instgrm-captioned data-instgrm-permalink="https://www.instagram.com/reel/DV68jcgDyy0/?utm_source=ig_embed&amp;utm_campaign=loading" data-instgrm-version="14" style="background:#FFF;border:0;border-radius:12px;box-shadow:0 0 1px 0 rgba(0,0,0,0.3),0 4px 20px 0 rgba(0,0,0,0.08);margin:0;max-width:100%;min-width:0;padding:0;width:100%;">
-        <div style="padding:16px;">
-          <a href="https://www.instagram.com/reel/DV68jcgDyy0/?utm_source=ig_embed&utm_campaign=loading" style="background:#FFFFFF;line-height:0;padding:0;text-align:center;text-decoration:none;width:100%;" target="_blank">
-            <div style="display:flex;flex-direction:row;align-items:center;"><div style="background-color:#F4F4F4;border-radius:50%;flex-grow:0;height:40px;margin-right:14px;width:40px;"></div><div style="display:flex;flex-direction:column;flex-grow:1;justify-content:center;"><div style="background-color:#F4F4F4;border-radius:4px;flex-grow:0;height:14px;margin-bottom:6px;width:100px;"></div><div style="background-color:#F4F4F4;border-radius:4px;flex-grow:0;height:14px;width:60px;"></div></div></div>
-            <div style="padding:19% 0;"></div>
-            <div style="display:block;height:50px;margin:0 auto 12px;width:50px;"><svg width="50px" height="50px" viewBox="0 0 60 60" xmlns="http://www.w3.org/2000/svg"><g fill="none" fill-rule="evenodd"><g fill="#000000"><path d="M556.869,30.41 C554.814,30.41 553.148,32.076 553.148,34.131 C553.148,36.186 554.814,37.852 556.869,37.852 C558.924,37.852 560.59,36.186 560.59,34.131 C560.59,32.076 558.924,30.41 556.869,30.41 M541,60.657 C535.114,60.657 530.342,55.887 530.342,50 C530.342,44.114 535.114,39.342 541,39.342 C546.887,39.342 551.658,44.114 551.658,50 C551.658,55.887 546.887,60.657 541,60.657 M541,33.886 C532.1,33.886 524.886,41.1 524.886,50 C524.886,58.899 532.1,66.113 541,66.113 C549.9,66.113 557.115,58.899 557.115,50 C557.115,41.1 549.9,33.886 541,33.886 M565.378,62.101 C565.244,65.022 564.756,66.606 564.346,67.663 C563.803,69.06 563.154,70.057 562.106,71.106 C561.058,72.155 560.06,72.803 558.662,73.347 C557.607,73.757 556.021,74.244 553.102,74.378 C549.944,74.521 548.997,74.552 541,74.552 C533.003,74.552 532.056,74.521 528.898,74.378 C525.979,74.244 524.393,73.757 523.338,73.347 C521.94,72.803 520.942,72.155 519.894,71.106 C518.846,70.057 518.197,69.06 517.654,67.663 C517.244,66.606 516.755,65.022 516.623,62.101 C516.479,58.943 516.448,57.996 516.448,50 C516.448,42.003 516.479,41.056 516.623,37.899 C516.755,34.978 517.244,33.391 517.654,32.338 C518.197,30.938 518.846,29.942 519.894,28.894 C520.942,27.846 521.94,27.196 523.338,26.654 C524.393,26.244 525.979,25.756 528.898,25.623 C532.057,25.479 533.004,25.448 541,25.448 C548.997,25.448 549.943,25.479 553.102,25.623 C556.021,25.756 557.607,26.244 558.662,26.654 C560.06,27.196 561.058,27.846 562.106,28.894 C563.154,29.942 563.803,30.938 564.346,32.338 C564.756,33.391 565.244,34.978 565.378,37.899 C565.522,41.056 565.552,42.003 565.552,50 C565.552,57.996 565.522,58.943 565.378,62.101 M570.82,37.631 C570.674,34.438 570.167,32.258 569.425,30.349 C568.659,28.377 567.633,26.702 565.965,25.035 C564.297,23.368 562.623,22.342 560.652,21.575 C558.743,20.834 556.562,20.326 553.369,20.18 C550.169,20.033 549.148,20 541,20 C532.853,20 531.831,20.033 528.631,20.18 C525.438,20.326 523.257,20.834 521.349,21.575 C519.376,22.342 517.703,23.368 516.035,25.035 C514.368,26.702 513.342,28.377 512.574,30.349 C511.834,32.258 511.326,34.438 511.181,37.631 C511.035,40.831 511,41.851 511,50 C511,58.147 511.035,59.17 511.181,62.369 C511.326,65.562 511.834,67.743 512.574,69.651 C513.342,71.625 514.368,73.296 516.035,74.965 C517.703,76.634 519.376,77.658 521.349,78.425 C523.257,79.167 525.438,79.673 528.631,79.82 C531.831,79.965 532.853,80.001 541,80.001 C549.148,80.001 550.169,79.965 553.369,79.82 C556.562,79.673 558.743,79.167 560.652,78.425 C562.623,77.658 564.297,76.634 565.965,74.965 C567.633,73.296 568.659,71.625 569.425,69.651 C570.167,67.743 570.674,65.562 570.82,62.369 C570.966,59.17 571,58.147 571,50 C571,41.851 570.966,40.831 570.82,37.631"></path></g></g></svg></div>
-            <div style="padding-top:8px;"><div style="color:#3897f0;font-family:Arial,sans-serif;font-size:14px;font-weight:550;line-height:18px;">View this post on Instagram</div></div>
-            <div style="padding:12.5% 0;"></div>
-          </a>
+      <blockquote class="instagram-media" data-instgrm-captioned data-instgrm-permalink="https://www.instagram.com/reel/DV68jcgDyy0/?utm_source=ig_embed&amp;utm_campaign=loading" data-instgrm-version="14" style="background:#FFF;border:0;border-radius:0;box-shadow:0 0 1px 0 rgba(0,0,0,0.3),0 4px 20px 0 rgba(0,0,0,0.08);margin:0;max-width:100%;min-width:0;padding:0;width:100%;">
+        <div style="padding:16px;"><a href="https://www.instagram.com/reel/DV68jcgDyy0/?utm_source=ig_embed&utm_campaign=loading" style="background:#FFFFFF;line-height:0;padding:0;text-align:center;text-decoration:none;width:100%;" target="_blank"><div style="display:flex;flex-direction:row;align-items:center;"><div style="background-color:#F4F4F4;border-radius:50%;flex-grow:0;height:40px;margin-right:14px;width:40px;"></div><div style="display:flex;flex-direction:column;flex-grow:1;justify-content:center;"><div style="background-color:#F4F4F4;border-radius:4px;flex-grow:0;height:14px;margin-bottom:6px;width:100px;"></div><div style="background-color:#F4F4F4;border-radius:4px;flex-grow:0;height:14px;width:60px;"></div></div></div><div style="padding:19% 0;"></div><div style="display:block;height:50px;margin:0 auto 12px;width:50px;"><svg width="50px" height="50px" viewBox="0 0 60 60" xmlns="http://www.w3.org/2000/svg"><g fill="none" fill-rule="evenodd"><g fill="#000000"><path d="M556.869,30.41 C554.814,30.41 553.148,32.076 553.148,34.131 C553.148,36.186 554.814,37.852 556.869,37.852 C558.924,37.852 560.59,36.186 560.59,34.131 C560.59,32.076 558.924,30.41 556.869,30.41 M541,60.657 C535.114,60.657 530.342,55.887 530.342,50 C530.342,44.114 535.114,39.342 541,39.342 C546.887,39.342 551.658,44.114 551.658,50 C551.658,55.887 546.887,60.657 541,60.657 M541,33.886 C532.1,33.886 524.886,41.1 524.886,50 C524.886,58.899 532.1,66.113 541,66.113 C549.9,66.113 557.115,58.899 557.115,50 C557.115,41.1 549.9,33.886 541,33.886 M565.378,62.101 C565.244,65.022 564.756,66.606 564.346,67.663 C563.803,69.06 563.154,70.057 562.106,71.106 C561.058,72.155 560.06,72.803 558.662,73.347 C557.607,73.757 556.021,74.244 553.102,74.378 C549.944,74.521 548.997,74.552 541,74.552 C533.003,74.552 532.056,74.521 528.898,74.378 C525.979,74.244 524.393,73.757 523.338,73.347 C521.94,72.803 520.942,72.155 519.894,71.106 C518.846,70.057 518.197,69.06 517.654,67.663 C517.244,66.606 516.755,65.022 516.623,62.101 C516.479,58.943 516.448,57.996 516.448,50 C516.448,42.003 516.479,41.056 516.623,37.899 C516.755,34.978 517.244,33.391 517.654,32.338 C518.197,30.938 518.846,29.942 519.894,28.894 C520.942,27.846 521.94,27.196 523.338,26.654 C524.393,26.244 525.979,25.756 528.898,25.623 C532.057,25.479 533.004,25.448 541,25.448 C548.997,25.448 549.943,25.479 553.102,25.623 C556.021,25.756 557.607,26.244 558.662,26.654 C560.06,27.196 561.058,27.846 562.106,28.894 C563.154,29.942 563.803,30.938 564.346,32.338 C564.756,33.391 565.244,34.978 565.378,37.899 C565.522,41.056 565.552,42.003 565.552,50 C565.552,57.996 565.522,58.943 565.378,62.101 M570.82,37.631 C570.674,34.438 570.167,32.258 569.425,30.349 C568.659,28.377 567.633,26.702 565.965,25.035 C564.297,23.368 562.623,22.342 560.652,21.575 C558.743,20.834 556.562,20.326 553.369,20.18 C550.169,20.033 549.148,20 541,20 C532.853,20 531.831,20.033 528.631,20.18 C525.438,20.326 523.257,20.834 521.349,21.575 C519.376,22.342 517.703,23.368 516.035,25.035 C514.368,26.702 513.342,28.377 512.574,30.349 C511.834,32.258 511.326,34.438 511.181,37.631 C511.035,40.831 511,41.851 511,50 C511,58.147 511.035,59.17 511.181,62.369 C511.326,65.562 511.834,67.743 512.574,69.651 C513.342,71.625 514.368,73.296 516.035,74.965 C517.703,76.634 519.376,77.658 521.349,78.425 C523.257,79.167 525.438,79.673 528.631,79.82 C531.831,79.965 532.853,80.001 541,80.001 C549.148,80.001 550.169,79.965 553.369,79.82 C556.562,79.673 558.743,79.167 560.652,78.425 C562.623,77.658 564.297,76.634 565.965,74.965 C567.633,73.296 568.659,71.625 569.425,69.651 C570.167,67.743 570.674,65.562 570.82,62.369 C570.966,59.17 571,58.147 571,50 C571,41.851 570.966,40.831 570.82,37.631"></path></g></g></svg></div><div style="padding-top:8px;"><div style="color:#3897f0;font-family:Arial,sans-serif;font-size:14px;font-weight:550;line-height:18px;">View this post on Instagram</div></div><div style="padding:12.5% 0;"></div></a>
           <p style="color:#c9c8cd;font-family:Arial,sans-serif;font-size:14px;line-height:17px;margin:8px 0 0;overflow:hidden;text-align:center;"><a href="https://www.instagram.com/reel/DV68jcgDyy0/?utm_source=ig_embed&utm_campaign=loading" style="color:#c9c8cd;font-family:Arial,sans-serif;font-size:14px;text-decoration:none;" target="_blank">A post shared by Michael Levy | Men's Confidence Coach (@confidencebymike)</a></p>
         </div>
       </blockquote>
@@ -999,74 +1333,105 @@ footer{
     </div>
   <script async src="//www.instagram.com/embed.js"></script>
   </div>
-
 </section>
+
+<!-- TRUST STRIP -->
+<div class="trust-strip">
+  <div class="ts-left">
+    <h2 class="ts-title reveal">What makes this<br><em>different.</em></h2>
+  </div>
+  <div class="ts-right">
+    <div class="ts-item reveal">
+      <div class="ts-item-title">Niche-only focus</div>
+      <div class="ts-item-desc">No generalist editing. Every format, hook, and strategy is built around your specific content and audience.</div>
+    </div>
+    <div class="ts-item reveal" style="transition-delay:.08s">
+      <div class="ts-item-title">Revenue-first metrics</div>
+      <div class="ts-item-desc">Success is measured by leads and clients and leads generated — not views, likes, or follower counts nobody asked for.</div>
+    </div>
+    <div class="ts-item reveal" style="transition-delay:.16s">
+      <div class="ts-item-title">You talk to who does the work</div>
+      <div class="ts-item-desc">No middlemen. No handoffs. The person you brief is the person who edits, strategizes, and delivers.</div>
+    </div>
+    <div class="ts-item reveal" style="transition-delay:.24s">
+      <div class="ts-item-title">Partnership, not transactions</div>
+      <div class="ts-item-desc">Monthly collaboration, not one-off projects. Growth compounds when someone is invested in your long-term success.</div>
+    </div>
+  </div>
+</div>
 
 <!-- FAQ -->
 <section class="faq-section" id="faq">
-  <div class="label-sm reveal">Got questions?</div>
-  <h2 class="title-serif reveal" style="color:var(--page);margin-bottom:0;transition-delay:.1s">We've got<br><em>answers.</em></h2>
-  <div class="faq-list" style="margin-top:56px">
-
-    <div class="faq-item reveal">
-      <button class="faq-q" onclick="toggleFaq(this)">
-        How soon can I expect to see results?
-        <span class="faq-icon">+</span>
-      </button>
-      <div class="faq-a">Depends on where you're starting from — but most clients see measurable improvements in content performance and audience engagement within 4–6 weeks. Sustained, compounding growth follows in the months after.</div>
+  <span class="section-label reveal">Common questions</span>
+  <h2 class="section-title reveal" style="transition-delay:.1s">Everything you want<br><em>to know before reaching out.</em></h2>
+  <div class="faq-grid" style="margin-top:64px">
+    <div class="faq-list">
+      <div class="faq-item reveal">
+        <button class="faq-q" onclick="toggleFaq(this)">
+          How soon can I expect to see results?
+          <span class="faq-icon">+</span>
+        </button>
+        <div class="faq-a">Depends on where you're starting from — but most coaches see measurable improvements in content performance and audience engagement within 4–6 weeks. Sustained, compounding growth follows in the months after.</div>
+      </div>
+      <div class="faq-item reveal" style="transition-delay:.05s">
+        <button class="faq-q" onclick="toggleFaq(this)">
+          Monthly packages only, or can I do one-time work?
+          <span class="faq-icon">+</span>
+        </button>
+        <div class="faq-a">Both. Monthly partnerships are where the magic compounds, but one-time engagements are available — channel audits, strategy blueprints, and setup work for coaches who need a strong foundation fast.</div>
+      </div>
+      <div class="faq-item reveal" style="transition-delay:.1s">
+        <button class="faq-q" onclick="toggleFaq(this)">
+          How do you actually measure success?
+          <span class="faq-icon">+</span>
+        </button>
+        <div class="faq-a">Not with vanity metrics. Growth is tracked against audience retention, follower-to-view conversion rates, virality scores, and — most importantly — the actual leads and revenue your content generates.</div>
+      </div>
+      <div class="faq-item reveal" style="transition-delay:.15s">
+        <button class="faq-q" onclick="toggleFaq(this)">
+          What do monthly packages cost?
+          <span class="faq-icon">+</span>
+        </button>
+        <div class="faq-a">Everything is scoped to your goals, but the typical range for comprehensive monthly content and growth work sits between $500–$1,000/month. Reach out and we'll find a number that makes sense for where you are.</div>
+      </div>
     </div>
-
-    <div class="faq-item reveal" style="transition-delay:.05s">
-      <button class="faq-q" onclick="toggleFaq(this)">
-        Monthly packages only, or can I do one-time work?
-        <span class="faq-icon">+</span>
-      </button>
-      <div class="faq-a">Both. Monthly retainers are where the magic compounds, but we also offer one-time engagements — channel audits, strategy blueprints, and setup services for creators who need a strong foundation fast.</div>
+    <div class="faq-cta-card reveal" style="transition-delay:.2s">
+      <span class="fcc-label">Ready to work together?</span>
+      <h3 class="fcc-title">Stop hiring editors.<br><em>Get a partner instead.</em></h3>
+      <p class="fcc-desc">One conversation. No pressure. Just a real look at your content, your goals, and whether there's a genuine fit — because the best partnerships start with honesty.</p>
+      <a href="https://ig.me/m/iampratikshit" class="fcc-cta cta-hover" target="_blank">
+        DM on Instagram <span class="arr">→</span>
+      </a>
+      <p class="fcc-note">Usually replies within a few hours</p>
     </div>
-
-    <div class="faq-item reveal" style="transition-delay:.1s">
-      <button class="faq-q" onclick="toggleFaq(this)">
-        How do you actually measure success?
-        <span class="faq-icon">+</span>
-      </button>
-      <div class="faq-a">Not with vanity metrics. We track audience retention, follower-to-view conversion rates, virality scores, and — most importantly — the revenue and leads your content generates directly.</div>
-    </div>
-
-    <div class="faq-item reveal" style="transition-delay:.15s">
-      <button class="faq-q" onclick="toggleFaq(this)">
-        What do monthly packages cost?
-        <span class="faq-icon">+</span>
-      </button>
-      <div class="faq-a">Everything is scoped to your needs, but the typical range for our comprehensive monthly content and growth packages sits between $500–$1,000/month. Book a call and we'll dial in a number that makes sense for your goals.</div>
-    </div>
-
   </div>
 </section>
 
 <!-- CTA FINALE -->
 <div class="cta-finale">
-  <h2 class="reveal">Ready to stop<br><em>posting into the void?</em></h2>
-  <p class="reveal" style="transition-delay:.1s">One call. A real strategy. Content that earns you authority — and an audience that grows on its own.</p>
-  <a href="https://ig.me/m/iampratikshit" class="btn-big cta-hover reveal" target="_blank" style="transition-delay:.2s">
-    DM us on Instagram
-    <span class="arrow">→</span>
-  </a>
+  <h2 class="reveal">Your content deserves<br><em>an audience that converts.</em></h2>
+  <p class="reveal" style="transition-delay:.1s">One conversation. A real strategy built around your brand. An audience that finds you — so you can focus on the work that actually matters.</p>
+  <div class="cta-btn-group reveal" style="transition-delay:.2s">
+    <a href="https://ig.me/m/iampratikshit" class="btn-primary cta-hover" target="_blank">
+      DM us on Instagram <span class="arr">→</span>
+    </a>
+  </div>
 </div>
 
 <!-- FOOTER -->
 <footer>
-  <a href="#" class="footer-logo">BrandsAscend</a>
+  <a href="#" class="footer-logo">Pratikshit</a>
   <div class="footer-links">
+    <a href="#philosophy">Why Us</a>
     <a href="#services">Services</a>
-    <a href="#process">Process</a>
     <a href="#clients">Clients</a>
     <a href="#faq">FAQ</a>
   </div>
-  <div class="footer-copy">© 2025 BrandsAscend</div>
+  <div class="footer-copy">© 2025 Pratikshit</div>
 </footer>
 
 <script>
-/* ── CURSOR ── */
+/* CURSOR */
 const cur=document.getElementById('cursor');
 const ring=document.getElementById('cursor-ring');
 let mx=0,my=0,rx=0,ry=0;
@@ -1077,22 +1442,22 @@ document.addEventListener('mousemove',e=>{
 (function loop(){rx+=(mx-rx)*.1;ry+=(my-ry)*.1;
   ring.style.left=rx+'px';ring.style.top=ry+'px';
   requestAnimationFrame(loop);})();
-document.querySelectorAll('.cta-hover,a,button,.step,.stat-cell,.client-tile,.svc-card').forEach(el=>{
+document.querySelectorAll('.cta-hover,a,button,.step,.stat-cell,.client-tile,.svc-card,.diff-card').forEach(el=>{
   el.addEventListener('mouseenter',()=>document.body.classList.add('hover-cta'));
   el.addEventListener('mouseleave',()=>document.body.classList.remove('hover-cta'));
 });
 
-/* ── SCROLL REVEAL ── */
+/* SCROLL REVEAL */
 const obs=new IntersectionObserver(entries=>{
   entries.forEach(e=>{if(e.isIntersecting){e.target.classList.add('visible');obs.unobserve(e.target)}});
-},{threshold:0.1});
+},{threshold:0.08});
 document.querySelectorAll('.reveal').forEach(el=>obs.observe(el));
 
-/* ── STAT COUNTERS ── */
+/* STAT COUNTERS */
 function animCount(el){
   const target=parseFloat(el.dataset.target);
   const suffix=el.dataset.suffix||'';
-  const dur=1500;const t0=performance.now();
+  const dur=1600;const t0=performance.now();
   const isInt=Number.isInteger(target);
   function tick(now){
     const p=Math.min((now-t0)/dur,1);
@@ -1105,31 +1470,30 @@ function animCount(el){
 const cobs=new IntersectionObserver(entries=>{
   entries.forEach(e=>{if(e.isIntersecting){animCount(e.target);cobs.unobserve(e.target)}});
 },{threshold:0.5});
-document.querySelectorAll('.stat-num[data-target]').forEach(el=>cobs.observe(el));
+document.querySelectorAll('[data-target]').forEach(el=>cobs.observe(el));
 
-/* ── PROCESS ACCORDION ── */
+/* PROCESS ACCORDION */
 function toggleStep(el){
   const was=el.classList.contains('active');
   document.querySelectorAll('.step.active').forEach(s=>s.classList.remove('active'));
   if(!was)el.classList.add('active');
 }
 
-/* ── FOUNDER VIDEO: autoplay on scroll into view ── */
+/* FOUNDER VIDEO lazy load */
 (function(){
-  const frame = document.getElementById('founder-yt');
-  if(!frame) return;
-  const io = new IntersectionObserver(entries=>{
+  const frame=document.getElementById('founder-yt');
+  if(!frame)return;
+  const io=new IntersectionObserver(entries=>{
     entries.forEach(e=>{
-      if(e.isIntersecting && frame.src === 'about:blank'){
-        frame.src = frame.dataset.src;
-        io.unobserve(frame);
+      if(e.isIntersecting&&frame.src==='about:blank'){
+        frame.src=frame.dataset.src;io.unobserve(frame);
       }
     });
   },{threshold:0.4});
   io.observe(frame);
 })();
 
-/* ── FAQ ACCORDION ── */
+/* FAQ ACCORDION */
 function toggleFaq(btn){
   const item=btn.closest('.faq-item');
   const was=item.classList.contains('open');
