@@ -123,14 +123,15 @@ nav{
 .tt-title em{font-style:italic;color:var(--accent);font-weight:400}
 .tt-videos{
   display:grid;grid-template-columns:1fr 1fr 1fr;
-  gap:32px;max-width:960px;margin:0 auto;
+  gap:32px;max-width:1240px;margin:0 auto;
 }
-.tt-video-item{display:flex;flex-direction:column;gap:16px}
+.tt-video-item{display:flex;flex-direction:column;gap:18px}
 .tt-frame{
   position:relative;width:100%;
-  padding-bottom:56.25%;
+  min-height:520px;
   overflow:hidden;
   border:1px solid rgba(255,255,255,0.08);
+  background:#000;
 }
 .tt-frame iframe{
   position:absolute;inset:0;
@@ -152,6 +153,7 @@ nav{
 @media(max-width:900px){
   .top-testimonials{padding:100px 20px 60px}
   .tt-videos{grid-template-columns:1fr}
+  .tt-frame{min-height:420px}
 }
 
 /* ── HERO ── */
@@ -620,6 +622,19 @@ nav{
   font-size:11px;color:var(--muted2);text-align:center;
   position:relative;z-index:1;
 }
+.client-followers{
+  margin-top:8px;
+  font-size:11px;
+  color:var(--muted);
+  text-align:center;
+  position:relative;
+  z-index:1;
+  letter-spacing:0.04em;
+}
+.client-followers strong{
+  color:var(--ink);
+  font-weight:600;
+}
 .client-ig{
   margin-top:10px;position:relative;z-index:1;
   font-size:10px;font-weight:600;letter-spacing:0.1em;
@@ -882,7 +897,7 @@ footer{
     <div class="tt-video-item">
       <div class="tt-frame">
         <iframe
-          src="https://www.youtube.com/embed/DWEwluTAsR8?autoplay=1&mute=0&loop=1&playlist=DWEwluTAsR8&controls=1&rel=0&playsinline=1"
+          src="https://www.youtube.com/embed/DWEwluTAsR8?autoplay=1&mute=1&loop=1&playlist=DWEwluTAsR8&controls=1&rel=0&playsinline=1"
           title="Testimonial — Erick Ronaldo"
           allow="autoplay; fullscreen; picture-in-picture"
           allowfullscreen>
@@ -900,7 +915,7 @@ footer{
     <div class="tt-video-item">
       <div class="tt-frame">
         <iframe
-          src="https://www.youtube.com/embed/LijwnStyfF8?autoplay=1&mute=0&loop=1&playlist=LijwnStyfF8&controls=1&rel=0&playsinline=1"
+          src="https://www.youtube.com/embed/LijwnStyfF8?autoplay=0&mute=0&loop=0&controls=1&rel=0&playsinline=1"
           title="Testimonial — Confidence By Mike"
           allow="autoplay; fullscreen; picture-in-picture"
           allowfullscreen>
@@ -918,7 +933,7 @@ footer{
     <div class="tt-video-item">
       <div class="tt-frame">
         <iframe
-          src="https://www.youtube.com/embed/Nyw_tmp_23k?autoplay=1&mute=1&loop=1&playlist=Nyw_tmp_23k&controls=1&rel=0&playsinline=1"
+          src="https://www.youtube.com/embed/Nyw_tmp_23k?autoplay=0&mute=0&loop=0&controls=1&rel=0&playsinline=1"
           title="Testimonial — Victor"
           allow="autoplay; fullscreen; picture-in-picture"
           allowfullscreen>
@@ -1222,6 +1237,7 @@ footer{
       </div>
       <div class="client-name">Victor</div>
       <div class="client-handle">@victormlno</div>
+      <div class="client-followers" data-followers-label="Followers"><strong>Live count</strong> on Instagram</div>
       <div class="client-ig">View ↗</div>
     </a>
     <a href="https://www.instagram.com/confidencebymike/" class="client-tile cta-hover reveal" target="_blank" rel="noopener" style="transition-delay:.1s">
@@ -1232,6 +1248,7 @@ footer{
       </div>
       <div class="client-name">Confidence By Mike</div>
       <div class="client-handle">@confidencebymike</div>
+      <div class="client-followers" data-followers-label="Followers"><strong>Live count</strong> on Instagram</div>
       <div class="client-ig">View ↗</div>
     </a>
     <a href="https://www.instagram.com/_erickronaldo_/" class="client-tile cta-hover reveal" target="_blank" rel="noopener" style="transition-delay:.15s">
@@ -1242,6 +1259,7 @@ footer{
       </div>
       <div class="client-name">Erick Ronaldo</div>
       <div class="client-handle">@_erickronaldo_</div>
+      <div class="client-followers" data-followers-label="Followers"><strong>Live count</strong> on Instagram</div>
       <div class="client-ig">View ↗</div>
     </a>
     <a href="https://www.instagram.com/tedzhar/" class="client-tile cta-hover reveal" target="_blank" rel="noopener" style="transition-delay:.2s">
@@ -1252,6 +1270,7 @@ footer{
       </div>
       <div class="client-name">Tedzhar</div>
       <div class="client-handle">@tedzhar</div>
+      <div class="client-followers" data-followers-label="Followers"><strong>Live count</strong> on Instagram</div>
       <div class="client-ig">View ↗</div>
     </a>
     <a href="https://www.instagram.com/eugenelitman_/" class="client-tile cta-hover reveal" target="_blank" rel="noopener" style="transition-delay:.25s">
@@ -1262,6 +1281,7 @@ footer{
       </div>
       <div class="client-name">Eugene Litman</div>
       <div class="client-handle">@eugenelitman_</div>
+      <div class="client-followers" data-followers-label="Followers"><strong>Live count</strong> on Instagram</div>
       <div class="client-ig">View ↗</div>
     </a>
 
@@ -1273,6 +1293,7 @@ footer{
       </div>
       <div class="client-name">Gene Gerrienne</div>
       <div class="client-handle">@genegerrienne</div>
+      <div class="client-followers" data-followers-label="Followers"><strong>Live count</strong> on Instagram</div>
       <div class="client-ig">View ↗</div>
     </a>
     <a href="https://www.instagram.com/timothydating/" class="client-tile cta-hover reveal" target="_blank" rel="noopener" style="transition-delay:.35s">
@@ -1283,6 +1304,7 @@ footer{
       </div>
       <div class="client-name">Timothy Dating</div>
       <div class="client-handle">@timothydating</div>
+      <div class="client-followers" data-followers-label="Followers"><strong>Live count</strong> on Instagram</div>
       <div class="client-ig">View ↗</div>
     </a>
     <a href="https://www.instagram.com/mattconway_pif/" class="client-tile cta-hover reveal" target="_blank" rel="noopener" style="transition-delay:.4s">
@@ -1293,6 +1315,7 @@ footer{
       </div>
       <div class="client-name">Matt Conway</div>
       <div class="client-handle">@mattconway_pif</div>
+      <div class="client-followers" data-followers-label="Followers"><strong>Live count</strong> on Instagram</div>
       <div class="client-ig">View ↗</div>
     </a>
   </div>
