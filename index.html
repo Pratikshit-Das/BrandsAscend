@@ -1046,7 +1046,9 @@ footer{
   <!-- LEFT: autoplay YouTube Short -->
   <div class="hero-left">
     <iframe
-      src="https://www.youtube.com/embed/z2Xz-V7r4gs?autoplay=1&mute=1&loop=1&playlist=z2Xz-V7r4gs&controls=0&rel=0&playsinline=1&modestbranding=1"
+      id="hero-yt"
+      data-src="https://www.youtube.com/embed/z2Xz-V7r4gs?autoplay=1&mute=0&loop=1&playlist=z2Xz-V7r4gs&controls=0&rel=0&playsinline=1&modestbranding=1"
+      src="about:blank"
       title="BrandsAscend Growth Reel"
       allow="autoplay; fullscreen; picture-in-picture"
       allowfullscreen>
@@ -1625,6 +1627,21 @@ function toggleStep(el){
     });
   },{threshold:0.4});
   io.observe(frame);
+})();
+
+/* HERO VIDEO lazy load — fires after first user gesture so browser allows sound */
+(function(){
+  const frame=document.getElementById('hero-yt');
+  if(!frame)return;
+  function loadHero(){
+    if(frame.src==='about:blank'){
+      frame.src=frame.dataset.src;
+    }
+    ['scroll','click','touchstart','keydown'].forEach(ev=>window.removeEventListener(ev,loadHero));
+  }
+  ['scroll','click','touchstart','keydown'].forEach(ev=>window.addEventListener(ev,loadHero,{once:true,passive:true}));
+  // Fallback: load after 2s even without interaction
+  setTimeout(loadHero,2000);
 })();
 
 /* FAQ ACCORDION */
