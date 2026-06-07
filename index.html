@@ -918,39 +918,198 @@ footer{
 }
 .reveal.visible{opacity:1;transform:translateY(0)}
 
+/* ── HAMBURGER ── */
+.nav-hamburger{
+  display:none;
+  flex-direction:column;justify-content:center;align-items:center;
+  width:40px;height:40px;gap:5px;cursor:pointer;
+  background:none;border:none;padding:0;flex-shrink:0;
+}
+.nav-hamburger span{
+  display:block;width:22px;height:1.5px;
+  background:var(--ink);
+  transition:transform .3s,opacity .3s,width .3s;
+}
+.nav-hamburger.open span:nth-child(1){transform:translateY(6.5px) rotate(45deg)}
+.nav-hamburger.open span:nth-child(2){opacity:0;width:0}
+.nav-hamburger.open span:nth-child(3){transform:translateY(-6.5px) rotate(-45deg)}
+
+/* ── MOBILE DRAWER ── */
+.mobile-menu{
+  display:none;
+  position:fixed;inset:0;
+  background:var(--off-white);
+  z-index:9990;
+  flex-direction:column;
+  justify-content:center;align-items:center;
+  gap:0;
+  opacity:0;pointer-events:none;
+  transition:opacity .3s ease;
+}
+.mobile-menu.open{opacity:1;pointer-events:all}
+.mobile-menu a{
+  font-family:'Playfair Display',serif;
+  font-size:clamp(28px,8vw,40px);
+  font-weight:700;
+  color:var(--ink);
+  text-decoration:none;
+  padding:16px 32px;
+  display:block;
+  text-align:center;
+  transition:color .2s;
+  border-bottom:1px solid var(--border);
+  width:100%;
+}
+.mobile-menu a:last-child{border-bottom:none}
+.mobile-menu a:hover,
+.mobile-menu a:active{color:var(--accent)}
+.mobile-menu-cta{
+  margin-top:32px !important;
+  background:var(--accent) !important;
+  color:var(--white) !important;
+  font-size:14px !important;
+  font-family:'Outfit',sans-serif !important;
+  font-weight:600 !important;
+  letter-spacing:0.1em !important;
+  text-transform:uppercase !important;
+  padding:18px 40px !important;
+  width:auto !important;
+  border:none !important;
+}
+
+/* ── GLOBAL MOBILE ── */
 @media(max-width:900px){
   html{cursor:auto}
   #cursor,#cursor-ring{display:none}
-  nav{padding:16px 20px}
+
+  /* NAV */
+  nav{padding:16px 20px;position:sticky;top:0;z-index:9995;background:var(--off-white)}
   .nav-links{display:none}
+  .nav-cta{display:none}
+  .nav-hamburger{display:flex}
+  .mobile-menu{display:flex}
+
+  /* HERO */
   .hero{grid-template-columns:1fr}
-  .hero-left{min-height:380px}
-  .hero-right{padding:60px 20px 60px}
-  .philosophy,.founder{grid-template-columns:1fr}
+  .hero-left{min-height:320px;max-height:420px}
+  .hero-right{padding:48px 20px 52px}
+  .hero h1{font-size:clamp(36px,9vw,56px);margin-bottom:10px}
+  .hero-sub{font-size:clamp(16px,4.5vw,22px);margin-bottom:24px}
+  .hero-desc{font-size:14px;margin-bottom:36px}
+  .hero-actions{gap:12px}
+  .hero-actions .btn-primary{width:100%;justify-content:center;padding:16px 20px}
+  .hero-actions .btn-ghost{font-size:13px}
+
+  /* GROWTH STRIP */
   .growth-strip-inner{flex-direction:column}
-  .growth-block{border-right:none;border-bottom:1px solid rgba(255,255,255,0.06)}
-  .process-section,.clients-section,.videos-section,.faq-section,.trust-strip,.cta-finale{padding:80px 20px}
-  .pricing-section{padding:80px 20px}
+  .growth-block{border-right:none;border-bottom:1px solid rgba(255,255,255,0.06);padding:24px 20px}
+  .growth-block:last-child{border-bottom:none}
+
+  /* PHILOSOPHY */
+  .philosophy{grid-template-columns:1fr;gap:40px;padding:64px 20px}
+
+  /* STATS */
   .stats-row{grid-template-columns:1fr}
-  .stat-cell{border-right:none;border-bottom:1px solid var(--border)}
-  .step{grid-template-columns:52px 1fr 36px;gap:16px}
+  .stat-cell{padding:40px 20px;border-right:none;border-bottom:1px solid var(--border)}
+  .stat-cell:last-child{border-bottom:none}
+
+  /* FOUNDER */
+  .founder{grid-template-columns:1fr;gap:40px;padding:64px 20px}
+
+  /* TOP TESTIMONIALS */
+  .top-testimonials{padding:80px 20px 60px}
+  .tt-videos{grid-template-columns:1fr}
+  .tt-frame{min-height:320px}
+
+  /* PRICING */
+  .pricing-section{padding:64px 20px}
+  .pricing-section .section-head{margin-bottom:48px}
+  .pricing-grid{grid-template-columns:1fr 1fr;border:none;gap:16px}
+  .pkg-card{border-right:none;border:1px solid rgba(255,255,255,0.08);padding:32px 24px}
+  .pkg-card.featured{margin-top:0;padding-top:56px;padding-bottom:56px}
+  .pkg-footer-bar{display:none}
+
+  /* CLIENTS */
+  .clients-section{padding:64px 20px}
+  .clients-row{flex-direction:row;flex-wrap:wrap;gap:0}
+  .client-tile{
+    flex:1 1 calc(33.333% - 1px);
+    min-width:100px;
+    border-right:1px solid var(--border);
+    border-bottom:1px solid var(--border);
+    padding:28px 8px;
+  }
+  .client-tile:nth-child(3n){border-right:none}
+
+  /* VIDEOS */
+  .videos-section{padding:64px 20px}
   .videos-grid{grid-template-columns:1fr}
-  .clients-row{flex-direction:column}
-  .client-tile{border-right:none;border-bottom:1px solid var(--border)}
-  .section-head{flex-direction:column;align-items:flex-start}
-  footer{flex-direction:column;align-items:flex-start}
-  .trust-strip{grid-template-columns:1fr}
+
+  /* SECTION HEADS */
+  .section-head{flex-direction:column;align-items:flex-start;gap:24px;margin-bottom:40px}
+
+  /* SAY */
+  .say-section{padding:64px 20px}
+  .say-grid{grid-template-columns:1fr 1fr}
+
+  /* FAQ */
+  .faq-section{padding:64px 20px}
+  .faq-grid{grid-template-columns:1fr;gap:0}
+  .faq-cta-card{position:static;margin-top:40px}
+  .faq-item.open .faq-a{max-height:300px}
+
+  /* CTA FINALE */
+  .cta-finale{padding:80px 20px}
+
+  /* FOOTER */
+  footer{flex-direction:column;align-items:flex-start;padding:32px 20px;gap:20px}
+  .footer-links{gap:16px}
+
+  /* TRUST STRIP */
+  .trust-strip{grid-template-columns:1fr;padding:40px 20px}
   .ts-right{grid-template-columns:1fr}
-  .faq-grid{grid-template-columns:1fr}
-  .founder{gap:40px;padding:80px 20px}
-  .philosophy{gap:40px;padding:80px 20px}
-  .pricing-grid{grid-template-columns:1fr 1fr}
-  .pkg-card.featured{margin-top:0;padding-top:68px}
-  .pkg-footer-bar{grid-template-columns:1fr 1fr}
+
+  /* PROCESS */
+  .process-section{padding:64px 20px}
+  .step{grid-template-columns:48px 1fr 36px;gap:14px}
 }
+
 @media(max-width:560px){
+  /* HERO */
+  .hero-left{min-height:260px}
+  .hero-right{padding:40px 16px 48px}
+  .hero h1{font-size:clamp(32px,10vw,48px)}
+
+  /* PRICING */
   .pricing-grid{grid-template-columns:1fr}
+  .pkg-card.featured{padding-top:56px}
+
+  /* CLIENTS */
+  .client-tile{flex:1 1 calc(50% - 1px)}
+  .client-tile:nth-child(3n){border-right:1px solid var(--border)}
+  .client-tile:nth-child(2n){border-right:none}
+
+  /* SAY */
+  .say-grid{grid-template-columns:1fr}
+  .say-quote{font-size:16px}
+
+  /* MISC */
   .pkg-footer-bar{grid-template-columns:1fr}
+  .hero-actions{flex-direction:column;align-items:stretch}
+  .cta-btn-group{flex-direction:column;align-items:stretch}
+  .cta-btn-group .btn-primary{justify-content:center}
+
+  /* PHILOSOPHY */
+  .philosophy{padding:48px 16px}
+
+  /* FOUNDER / FAQ */
+  .founder{padding:48px 16px}
+  .faq-section{padding:48px 16px}
+  .clients-section{padding:48px 16px}
+  .videos-section{padding:48px 16px}
+  .pricing-section{padding:48px 16px}
+  .say-section{padding:48px 16px}
+  .cta-finale{padding:64px 16px}
 }
 </style>
 </head>
@@ -972,7 +1131,19 @@ footer{
     <li><a href="#faq">FAQ</a></li>
   </ul>
   <a href="https://ig.me/m/iampratikshit" class="nav-cta cta-hover" target="_blank">Work together →</a>
+  <button class="nav-hamburger" id="hamburger" aria-label="Menu">
+    <span></span><span></span><span></span>
+  </button>
 </nav>
+
+<!-- MOBILE MENU DRAWER -->
+<div class="mobile-menu" id="mobileMenu">
+  <a href="#philosophy" class="mobile-link">Why Us</a>
+  <a href="#packages" class="mobile-link">Packages</a>
+  <a href="#clients" class="mobile-link">Clients</a>
+  <a href="#faq" class="mobile-link">FAQ</a>
+  <a href="https://ig.me/m/iampratikshit" class="mobile-menu-cta" target="_blank">Work together →</a>
+</div>
 
 <!-- TESTIMONIALS AT TOP -->
 <section class="top-testimonials">
@@ -1661,6 +1832,27 @@ function toggleFaq(btn){
   document.querySelectorAll('.faq-item.open').forEach(el=>el.classList.remove('open'));
   if(!was)item.classList.add('open');
 }
+
+/* HAMBURGER MENU */
+(function(){
+  const btn=document.getElementById('hamburger');
+  const menu=document.getElementById('mobileMenu');
+  if(!btn||!menu)return;
+  function toggleMenu(){
+    const isOpen=menu.classList.contains('open');
+    menu.classList.toggle('open');
+    btn.classList.toggle('open');
+    document.body.style.overflow=isOpen?'':'hidden';
+  }
+  btn.addEventListener('click',toggleMenu);
+  menu.querySelectorAll('a').forEach(a=>{
+    a.addEventListener('click',()=>{
+      menu.classList.remove('open');
+      btn.classList.remove('open');
+      document.body.style.overflow='';
+    });
+  });
+})();
 </script>
 </body>
 </html>
