@@ -128,6 +128,52 @@
   .r-link:hover{text-decoration:underline}
   .results .cta-row{justify-content:flex-start;margin-top:40px}
 
+  /* Sliding text testimonials */
+  .marquee{position:relative;width:100vw;margin:56px 0 0 calc(50% - 50vw);overflow:hidden;
+    -webkit-mask-image:linear-gradient(90deg,transparent,#000 12%,#000 88%,transparent);
+            mask-image:linear-gradient(90deg,transparent,#000 12%,#000 88%,transparent)}
+  body{overflow-x:clip}
+  .marquee-track{display:flex;gap:20px;width:max-content;padding:4px 20px;animation:marquee 45s linear infinite}
+  .marquee:hover .marquee-track{animation-play-state:paused}
+  @keyframes marquee{from{transform:translateX(0)}to{transform:translateX(calc(-50% - 10px))}}
+  @media (prefers-reduced-motion:reduce){.marquee{overflow-x:auto}.marquee-track{animation:none}}
+  .t-card{flex:none;width:380px;padding:28px;border:1px solid var(--line);border-radius:14px;background:rgba(14,14,14,.78);backdrop-filter:blur(6px)}
+  @media (max-width:560px){.t-card{width:300px;padding:22px}}
+  .t-head{display:flex;align-items:center;gap:14px;margin-bottom:16px}
+  .t-head img,.t-head .initial{width:52px;height:52px;border-radius:50%;object-fit:cover;flex:none;background:#1d1d1d}
+  .t-head .initial{display:grid;place-items:center;border:1px solid var(--line);font:700 18px Archivo,sans-serif;color:var(--accent)}
+  .t-head b{display:block;font-size:17px;line-height:1.25}
+  .t-head span{color:var(--muted);font-size:14px}
+  .t-text{color:#cfcfc9;font-size:16px;line-height:1.55}
+  .t-text.result{color:var(--text)}
+  .t-text.result strong{color:var(--accent);font-weight:700}
+  .t-result{margin-top:14px;padding-top:12px;border-top:1px solid var(--line);font-size:14px;color:var(--muted)}
+  .t-result strong{color:var(--accent)}
+  .t-tag{display:inline-block;margin-top:14px;font-size:12px;font-weight:600;letter-spacing:.1em;text-transform:uppercase;color:var(--muted)}
+
+  /* Curved reel band */
+  .work{padding-bottom:40px}
+  .reel-band{position:relative;width:100%;height:clamp(390px,48vw,640px);overflow:hidden;container-type:size;margin-top:-10px}
+  .reel-band .band{position:absolute;inset:0;pointer-events:none;opacity:0;transition:opacity .5s ease}
+  .reel-band .band.ready{opacity:1}
+  .reel-band .tile{position:absolute;display:block;transform-style:preserve-3d;pointer-events:auto;cursor:pointer;outline:none}
+  .reel-band .band:hover .tile{animation-play-state:paused}
+  .reel-band .slice{position:absolute;top:0;overflow:hidden;background:#141414}
+  .reel-band .slice.first{border-radius:12px 0 0 12px}
+  .reel-band .slice.last{border-radius:0 12px 12px 0}
+  .reel-band .slice img{position:absolute;top:0;max-width:none;object-fit:cover;user-select:none;-webkit-user-drag:none}
+  .reel-band .ov{position:absolute;top:0;pointer-events:none}
+  .reel-band .badge{position:absolute;left:50%;bottom:7%;transform:translateX(-50%);display:inline-flex;align-items:center;gap:.45em;white-space:nowrap;
+    padding:.55em 1em;border-radius:999px;background:var(--accent);color:#0a0a0a;font:800 1em/1 Archivo,sans-serif;letter-spacing:-.01em;
+    box-shadow:0 .4em 1.4em rgba(0,0,0,.55),0 0 0 .18em rgba(10,10,10,.6)}
+  .reel-band .badge svg{width:1.05em;height:1.05em;flex:none}
+  .reel-band .tile:focus-visible .slice{box-shadow:inset 0 0 0 3px var(--accent)}
+  .reel-modal{border:0;padding:0;background:transparent;overflow:visible;max-width:none;max-height:none;margin:auto}
+  .reel-modal::backdrop{background:rgba(0,0,0,.82);backdrop-filter:blur(4px)}
+  .reel-modal iframe{display:block;width:min(400px,92vw);height:min(720px,80vh);border:0;border-radius:14px;background:#fff}
+  .reel-close{position:absolute;top:-46px;right:0;width:36px;height:36px;border-radius:50%;border:1px solid #444;background:#111;color:#fff;font-size:16px;cursor:pointer}
+  .reel-open{display:block;text-align:center;margin-top:12px;color:var(--accent);font-weight:600;font-size:14px;text-decoration:none}
+
   /* How it works */
   .split{display:grid;grid-template-columns:1fr 1fr;gap:16px;margin-bottom:16px}
   @media (max-width:760px){.split{grid-template-columns:1fr}}
@@ -248,6 +294,9 @@
         <p>These founders handed their content over to us and kept showing up on camera, and here's what they have to say about it.</p>
       </div>
       <div class="grid-results" id="resultsGrid"></div>
+      <div class="marquee reveal" id="marquee" aria-label="What clients say">
+        <div class="marquee-track" id="marqueeTrack"></div>
+      </div>
       <div class="cta-row reveal">
         <a class="btn btn-primary" data-cta href="#">I Want Results Like These
           <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" aria-hidden="true"><path d="M5 12h14M13 6l6 6-6 6"/></svg>
@@ -255,6 +304,24 @@
       </div>
     </div>
   </section>
+
+  <!-- THE WORK (curved reel band) -->
+  <section class="work" id="work">
+    <div class="wrap">
+      <div class="sec-head reveal">
+        <div class="eyebrow">The work</div>
+        <h2>Content we've made for our clients.</h2>
+        <p>Tap any reel to watch it right here.</p>
+      </div>
+    </div>
+    <div class="reel-band" id="reelBand"></div>
+  </section>
+
+  <dialog class="reel-modal" id="reelModal" aria-label="Instagram reel">
+    <button class="reel-close" id="reelClose" aria-label="Close">✕</button>
+    <iframe id="reelFrame" title="Instagram reel" allowtransparency="true" allow="encrypted-media; autoplay; clipboard-write" loading="lazy"></iframe>
+    <a class="reel-open" id="reelOpen" href="#" target="_blank" rel="noopener">Open on Instagram ↗</a>
+  </dialog>
 
   <!-- HOW IT WORKS -->
   <section id="how">
@@ -422,6 +489,47 @@ const CONFIG = {
     }
   ],
 
+  // Sliding text testimonials under the videos.
+  //   quote  → the client's own words (shown in quotes). Paste real ones here.
+  //   result → shown instead when there's no quote; wrap the key number in **double stars**.
+  textTestimonials: [
+    { name: "Dempz", handle: "@dempzcarter", photo: "https://i.ibb.co/ns0cCwsp/image.png",
+      quote: "One of the most reliable teams I have ever worked with in my life.", result: "" },
+    { name: "Timothy", handle: "@timothydating", photo: "https://i.ibb.co/G4HbrSgH/image.png",
+      quote: "Thanks for contributing so much to my growth on social media within such a short period of time.",
+      result: "Grew from **200 to 21.8K followers**" },
+    { name: "Confidence By Mike", handle: "@confidencebymike", photo: "https://i.ibb.co/KxXgs4ry/image.png",
+      quote: "Love your grind", result: "" },
+    { name: "Victor", handle: "@victormlno", photo: "https://i.ibb.co/RGT05DzM/image.png",
+      quote: "The relationship with him feels very non-transactional, and he genuinely wants to help me grow.",
+      result: "Added **hundreds of new members** to his paid Skool community" },
+    { name: "Erick Ronaldo", handle: "@imerickronaldo", photo: "https://i.ibb.co/YBv9ZhJF/image.png",
+      quote: "I love you bro", result: "" },
+    { name: "Kyle", handle: "@crosshimself", photo: "https://i.ibb.co/6cchH4hV/image.png",
+      quote: "", result: "Generated **thousands of leads** and millions of views from his content." },
+    { name: "Goon House", handle: "@goonhouse_", photo: "https://i.ibb.co/ch51HY1w/image.png",
+      quote: "Thanks bro ur the best", result: "" }
+  ],
+
+  // Example reels in the curved band.
+  //   poster    → direct i.ibb.co image link (the one ending in .png/.jpg)
+  //   highlight → badge shown on the cover. icon: "views", "podcast" or "leads".
+  //               Leave text "" to hide the badge.
+  reels: [
+    { url: "https://www.instagram.com/reel/DGyN-kjx-2N/", name: "Client reel", poster: "https://i.ibb.co/jZ6w2MH3/image.png",
+      highlight: { icon: "views",   text: "" } },   // ← add the view count, e.g. "1.2M views"
+    { url: "https://www.instagram.com/reel/DTCHAAbDaml/", name: "Client reel", poster: "https://i.ibb.co/HDnXq1jr/image.png",
+      highlight: { icon: "views",   text: "" } },   // ← add the view count
+    { url: "https://www.instagram.com/reel/DcRbP6wy0Bh/", name: "Podcast clip", poster: "https://i.ibb.co/sJ3hKD2L/image.png",
+      highlight: { icon: "podcast", text: "Podcast clip" } },
+    { url: "https://www.instagram.com/p/DZnpF-5qdlE/",    name: "Client reel", poster: "https://i.ibb.co/kVzF10b1/image.png",
+      highlight: { icon: "leads",   text: "800+ leads generated" } },
+    { url: "https://www.instagram.com/reel/DcJ6h7CTeiz/", name: "Client reel", poster: "https://i.ibb.co/MyLtQv8n/image.png",
+      highlight: { icon: "",        text: "" } },
+    { url: "https://www.instagram.com/reel/DOxNiz0DjVd/", name: "Client reel", poster: "https://i.ibb.co/dwVMRBwG/image.png",
+      highlight: { icon: "views",   text: "" } }    // ← add the view count
+  ],
+
   // Client photos shown next to the hero trust line
   avatars: [
     "https://i.ibb.co/RGT05DzM/image.png",
@@ -550,6 +658,189 @@ CONFIG.testimonials.forEach(t => {
   const media = card.querySelector(".r-media");
   if(media) ytFacade(media, t.videoUrl, t.name.split(" ")[0] + "'s story");
 });
+
+/* ---------- Sliding text testimonials ---------- */
+(function(){
+  const list = CONFIG.textTestimonials || [];
+  const track = document.getElementById("marqueeTrack");
+  if(!list.length){ document.getElementById("marquee").remove(); return; }
+  const card = t => {
+    const avatar = t.photo
+      ? `<img src="${esc(t.photo)}" alt="" loading="lazy" width="52" height="52">`
+      : `<span class="initial">${esc(t.name.charAt(0))}</span>`;
+    const res = s => esc(s).replace(/\*\*(.+?)\*\*/g, "<strong>$1</strong>");
+    const body = t.quote
+      ? `<p class="t-text">“${esc(t.quote)}”</p>${t.result ? `<p class="t-result">${res(t.result)}</p>` : ""}`
+      : `<p class="t-text result">${res(t.result)}</p><span class="t-tag">Client result</span>`;
+    return `<article class="t-card"><div class="t-head">${avatar}<div><b>${esc(t.name)}</b><span>${esc(t.handle)}</span></div></div>${body}</article>`;
+  };
+  const set = list.map(card).join("");
+  // Two copies side by side make the loop seamless; the second copy is hidden from screen readers
+  track.innerHTML = set + `<div style="display:contents" aria-hidden="true">${set}</div>`;
+  track.style.animationDuration = (list.length * 7.5) + "s";
+})();
+
+/* ---------- Curved reel band (Tilted Grid Hero, ported to plain JS) ---------- */
+(function(){
+  const host = document.getElementById("reelBand");
+  const reels = (CONFIG.reels || []).filter(r => r.url);
+  if(!reels.length){ document.getElementById("work").remove(); return; }
+
+  // Look and feel
+  const SLICES = 16, CAMERA = 1.6, MAX_WIDTH = 55;
+  const speed = 4, tileHeight = 58, aspect = 0.64, gap = 8, axis = 50, curve = 60, fade = 10;
+  const bend = Math.min(85, Math.max(5, curve)) * Math.PI / 180;
+
+  const shortcode = url => (url.match(/\/(?:p|reel|reels)\/([\w-]+)/) || [])[1];
+
+  // Branded placeholder cover, used until a real poster is added in CONFIG
+  const cover = (r, i) => {
+    if(r.poster) return r.poster;
+    const hue = ["#2a1f05", "#1f1a10", "#271a08"][i % 3];
+    const svg = `<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 900 1600">
+      <defs><linearGradient id="g" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="${hue}"/><stop offset="1" stop-color="#050505"/></linearGradient>
+      <radialGradient id="r" cx=".5" cy=".42" r=".55"><stop offset="0" stop-color="#ffc21a" stop-opacity=".28"/><stop offset="1" stop-color="#ffc21a" stop-opacity="0"/></radialGradient></defs>
+      <rect width="900" height="1600" fill="url(#g)"/><rect width="900" height="1600" fill="url(#r)"/>
+      <rect x="70" y="80" width="96" height="96" rx="28" fill="none" stroke="#ffffff" stroke-opacity=".55" stroke-width="9"/>
+      <circle cx="118" cy="128" r="22" fill="none" stroke="#ffffff" stroke-opacity=".55" stroke-width="9"/><circle cx="146" cy="100" r="6" fill="#ffffff" fill-opacity=".55"/>
+      <circle cx="450" cy="680" r="120" fill="#ffc21a"/><path d="M415 615 L415 745 L525 680 Z" fill="#0a0a0a"/>
+      <text x="450" y="1300" text-anchor="middle" font-family="Arial,Helvetica,sans-serif" font-weight="700" font-size="74" fill="#ffffff">${r.name.replace(/[<&>]/g,"")}</text>
+      <text x="450" y="1385" text-anchor="middle" font-family="Arial,Helvetica,sans-serif" font-size="50" fill="#ffc21a">${(r.handle||"").replace(/[<&>]/g,"")}</text>
+      <text x="450" y="1480" text-anchor="middle" font-family="Arial,Helvetica,sans-serif" font-size="42" letter-spacing="6" fill="#ffffff" fill-opacity=".55">TAP TO WATCH</text></svg>`;
+    return "data:image/svg+xml;charset=utf-8," + encodeURIComponent(svg);
+  };
+  const covers = reels.map(cover);
+  const ICONS = {
+    views: '<svg viewBox="0 0 24 24" fill="currentColor"><path d="M7 4.5v15l13-7.5z"/></svg>',
+    podcast: '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2"><rect x="9" y="3" width="6" height="11" rx="3"/><path d="M5 11a7 7 0 0 0 14 0M12 18v3"/></svg>',
+    leads: '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2"><path d="M3 17l6-6 4 4 8-8"/><path d="M15 7h6v6"/></svg>'
+  };
+  const badges = reels.map(r => {
+    const hl = r.highlight || {};
+    if(!hl.text) return "";
+    return `<span class="badge">${ICONS[hl.icon] || ""}<span>${esc(hl.text)}</span></span>`;
+  });
+  covers.forEach(src => { new Image().src = src; });
+
+  const arc = b => (CAMERA - 1 + Math.cos(b)) / (2 * CAMERA * Math.sin(b));
+  function measure(width, height){
+    const hgt = Math.min(tileHeight / 100 * height, MAX_WIDTH / 100 * width / aspect);
+    const radius = width * arc(bend);
+    if(!(hgt > 0) || !(radius > 0)) return { columns: 2, sweep: 0, unit: 0, limit: 0 };
+    const deg = rad => rad * 180 / Math.PI;
+    const unit = deg(hgt / radius);
+    const pitch = (aspect + gap / 100) * unit;
+    const limit = deg(bend) + aspect * unit / 2;
+    const columns = Math.min(60, Math.max(2, Math.ceil(2 * limit / pitch)));
+    const round = n => +n.toFixed(4);
+    const sweep = round(columns * pitch / 2);
+    return { columns, sweep, unit: round(unit), limit: round(Math.min(sweep, limit)) };
+  }
+
+  const style = document.createElement("style");
+  document.head.appendChild(style);
+  let last = "";
+
+  function build(){
+    const L = measure(host.clientWidth, host.clientHeight);
+    const key = [L.columns, L.sweep, L.unit].join("|");
+    if(key === last) return;
+    last = key;
+    const { columns, sweep, unit, limit } = L;
+
+    const u = n => `calc(${+n.toFixed(4)} * min(${tileHeight}cqh, ${+(MAX_WIDTH / aspect).toFixed(4)}cqw))`;
+    const r = 100 * arc(bend);
+    const radius = `${+r.toFixed(3)}cqw`;
+    const turn = d => `translateZ(${radius}) rotateY(${+d.toFixed(4)}deg) translateZ(-${radius})`;
+    const hide = +(((sweep - limit) / (2 * sweep || 1)) * 100).toFixed(4);
+    style.textContent =
+      `@keyframes reelOrbit{from{transform:${turn(-sweep)}}to{transform:${turn(sweep)}}` +
+      `0%,${hide}%,${100 - hide}%,100%{visibility:hidden}` +
+      `${hide + 0.001}%,${100 - hide - 0.001}%{visibility:visible}}` +
+      `@media(prefers-reduced-motion:reduce){#reelBand .tile{animation-play-state:paused!important}}`;
+
+    const share = aspect / SLICES;
+    const duration = columns * speed;
+    const mask = `linear-gradient(90deg,transparent,#000 ${fade}%,#000 ${100 - fade}%,transparent)`;
+
+    const band = document.createElement("div");
+    band.className = "band";
+    band.style.perspective = `${+(r * CAMERA).toFixed(3)}cqw`;
+    band.style.perspectiveOrigin = `50% ${axis}%`;
+    band.style.maskImage = mask;
+    band.style.webkitMaskImage = mask;
+
+    for(let t = 0; t < columns; t++){
+      const first = columns - 1 - t;
+      const tile = document.createElement("a");
+      tile.className = "tile";
+      tile.style.left = `calc(50% - ${u(aspect / 2)})`;
+      tile.style.top = `calc(${axis}% - ${u(0.5)})`;
+      tile.style.width = u(aspect);
+      tile.style.height = u(1);
+      tile.style.animation = `reelOrbit ${duration}s linear ${-t * speed}s infinite`;
+
+      const imgs = [], ovs = [];
+      for(let k = 0; k < SLICES; k++){
+        const s = document.createElement("div");
+        s.className = "slice" + (k === 0 ? " first" : "") + (k === SLICES - 1 ? " last" : "");
+        s.style.left = u((aspect - share) / 2);
+        s.style.width = k === SLICES - 1 ? u(share) : `calc(${u(share)} + 1px)`;
+        s.style.height = u(1);
+        s.style.transform = turn((aspect / 2 - (k + 0.5) * share) * unit);
+        const img = document.createElement("img");
+        img.alt = ""; img.draggable = false;
+        img.style.left = u(-k * share);
+        img.style.width = u(aspect);
+        img.style.height = u(1);
+        const ov = document.createElement("div");
+        ov.className = "ov";
+        ov.style.left = u(-k * share);
+        ov.style.width = u(aspect);
+        ov.style.height = u(1);
+        ov.style.fontSize = u(0.042);
+        s.append(img, ov); imgs.push(img); ovs.push(ov);
+        tile.appendChild(s);
+      }
+      const show = n => {
+        const i = n % reels.length;
+        imgs.forEach(img => { img.src = covers[i]; });
+        ovs.forEach(ov => { ov.innerHTML = badges[i]; });
+        tile.href = reels[i].url;
+        tile.dataset.i = i;
+        tile.setAttribute("aria-label", "Watch " + reels[i].name + " reel");
+      };
+      show(first);
+      tile.addEventListener("animationiteration", e => {
+        show(Math.round(e.elapsedTime / duration) * columns + first);
+      });
+      tile.addEventListener("click", e => { e.preventDefault(); openReel(+tile.dataset.i); });
+      band.appendChild(tile);
+    }
+    host.replaceChildren(band);
+    requestAnimationFrame(() => band.classList.add("ready"));
+  }
+
+  new ResizeObserver(build).observe(host);
+  build();
+
+  // Pop-up player
+  const modal = document.getElementById("reelModal");
+  const frame = document.getElementById("reelFrame");
+  const openLink = document.getElementById("reelOpen");
+  function openReel(i){
+    const r = reels[i], code = shortcode(r.url);
+    if(!code || !modal.showModal){ window.open(r.url, "_blank", "noopener"); return; }
+    if(typeof vsl !== "undefined" && vsl && vsl.pauseVideo) vsl.pauseVideo();
+    frame.src = `https://www.instagram.com/p/${code}/embed/`;
+    openLink.href = r.url;
+    modal.showModal();
+  }
+  const close = () => { modal.close(); };
+  document.getElementById("reelClose").addEventListener("click", close);
+  modal.addEventListener("click", e => { if(e.target === modal) close(); });
+  modal.addEventListener("close", () => { frame.src = "about:blank"; });
+})();
 
 /* ---------- Value stack ---------- */
 const check = '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" aria-hidden="true"><path d="M5 12.5l4.5 4.5L19 7"/></svg>';
